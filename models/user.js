@@ -9,10 +9,10 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema
-  .virtual('posts', { // 'posts' is the name of the virtual
-    ref: 'Post', // 'Post' is the name of the model
+  .virtual('trips', { // 'trips' is the name of the virtual
+    ref: 'Trip', // 'Trip' is the name of the model
     localField: '_id', // use the local _id field from this schema
-    foreignField: 'postedBy' // to match up with the createdBy field from the Post schema
+    foreignField: 'postedBy' // to match up with the createdBy field from the Trip schema
   });
 
 // ***************** I am going to use them later on ***************************
