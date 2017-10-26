@@ -65,7 +65,7 @@ function tripsPostsCreate(req, res) {
     .findById(req.params.id)
     .exec()
     .then(trip => {
-      trip.comments.push(req.body); // saved the new post into the array
+      trip.posts.push(req.body); // saved the new post into the array
       return trip.save();
     })
     .then(trip => res.redirect(`/trips/${trip.id}`))
