@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const postSchema = new mongoose.Schema({
   place: { type: String, required: true },
   body: { type: String, required: true },
-  dataTime: { type: Date, required: true },
+  dataTime: { type: Date },
   image: { type: String },
   locations: [{
     location: {
@@ -18,4 +18,4 @@ const postSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Post', postSchema);
+module.exports = postSchema;

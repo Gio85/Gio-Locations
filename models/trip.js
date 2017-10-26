@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+const postSchema = require('./post');
 
 const tripSchema = new mongoose.Schema({
   description: { type: String, required: true },
   name: { type: String },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
-  post: { type: mongoose.Schema.ObjectId, ref: 'Post' }
+  posts: [ postSchema ]
 }, {
   timestamps: true
 });
