@@ -2,6 +2,7 @@ import React from 'react';
 import LoginForm from './LoginForm';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
+import OAuthButton from './OAuthButton';
 
 class Login extends React.Component {
 
@@ -30,12 +31,16 @@ class Login extends React.Component {
 
   render() {
     return (
-      <LoginForm
-        credentials={this.state.credentials}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-        error={this.state.error}
-      />
+      <main>
+        <LoginForm
+          credentials={this.state.credentials}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          error={this.state.error}
+        />
+        <br />
+        <OAuthButton provider="facebook">Login with Facebook</OAuthButton>
+      </main>
     );
   }
 }
