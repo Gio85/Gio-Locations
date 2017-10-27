@@ -23,13 +23,14 @@ class TripsShow extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="row">
         <div className="page-banner col-md-12">
           <BackButton history={this.props.history} />
         </div>
         <div className="image-tile col-md-6">
-          <img src={this.state.trip.image} className="img-responsive" />
+          <img src={this.state.trip.imageSRC} className="img-responsive" />
         </div>
         <div className="col-md-6">
           <h3>{this.state.trip.name}</h3>

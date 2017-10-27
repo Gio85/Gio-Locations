@@ -15,6 +15,7 @@
     "test": "yarn test:server && yarn test:client"
   },
   "dependencies": {
+    "aws-sdk": "^2.29.0",
     "atob": "^2.0.3",
     "axios": "^0.16.2",
     "bcrypt": "^1.0.3",

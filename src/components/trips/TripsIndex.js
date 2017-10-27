@@ -17,7 +17,6 @@ class TripsIndex extends React.Component {
       .catch(err => console.log(err));
   }
   render() {
-    console.log(this.state.trips);
     return (
       <div>
         <div className="row">
@@ -30,7 +29,7 @@ class TripsIndex extends React.Component {
             return(
               <div key={trip.id} className="image-tile col-md-4 col-sm-6 col-xs-12">
                 <Link to={`/trips/${trip.id}`}>
-                  <img src={trip.image} className="img-responsive" />
+                  <img src={trip.imageSRC} className="img-responsive" />
                   <p>{trip.name}</p>
                   <p>{trip.description}</p>
                 </Link>

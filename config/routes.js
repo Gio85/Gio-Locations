@@ -5,18 +5,19 @@ const auth = require('../controllers/auth');
 const oauth = require('../controllers/oauth');
 const secureRoute = require('../lib/secureRoute');
 const conversations = require('../controllers/conversations');
+const imageUpload = require('../lib/imageUpload');
 
 
 router.route('/trips')
   .get(trips.index)
-  .post(trips.create);
+  .post(imageUpload, trips.create);
 
 router.route('/trips/:id')
   .get(trips.show)
   .put(secureRoute, trips.update)
   .delete(secureRoute, trips.delete);
 
-router.post('/trips/:id/posts', trips.postsCreate);
+router.post('/trips/:id/posts', imageUpload, trips.postsCreate);
 router.delete('/movies/:id/posts/:postId', secureRoute, trips.postsDelete);
 
 router.route('/register')

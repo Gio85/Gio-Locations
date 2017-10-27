@@ -21,13 +21,21 @@ const postSchema = new mongoose.Schema({
 });
 
 const tripSchema = new mongoose.Schema({
-  description: { type: String, required: true },
   name: { type: String },
+  description: { type: String, required: true },
   image: { type: String },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   posts: [ postSchema ]
 }, {
   timestamps: true
 });
+
+tripSchema
+  .virtual('imageSRC')
+  .get(function getImageSRC() {
+    if(!this.image) return null;
+    if(this.image.match(/^http/)) return this.image;
+    return `https://s3-eu-west-1.amazonaws.com/${process.env.AWS_BUCKET_NAME}/${this.image}`;
+  });
 
 module.exports = mongoose.model('Trip', tripSchema);

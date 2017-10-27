@@ -1,6 +1,9 @@
 const Trip = require('../models/trip');
 
 function createRoute(req, res) {
+
+  if(req.file) req.body.image = req.file.filename;
+
   Trip
     .create(req.body)
     .then(trip => res.status(201).json(trip))
