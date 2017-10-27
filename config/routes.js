@@ -35,8 +35,8 @@ router.route('/conversations')
   .get(secureRoute, conversations.conversationsIndex);
 
 router.route('/conversations/:id')
-  .get(secureRoute, conversations.conversationsShow)
-  .delete(conversations.conversationsDelete);
+  .get(secureRoute, conversations.conversationsShow);
+// .delete(conversations.conversationsDelete);
 
 router.route('/messages')
   .post(secureRoute, conversations.messagesCreate);
