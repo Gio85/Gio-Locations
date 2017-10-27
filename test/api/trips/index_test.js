@@ -54,7 +54,6 @@ describe('GET /api/trips', () => {
         expect(tripItem.id).to.be.a('string');
         expect(tripItem.description).to.equal(tripData[0].description);
         expect(tripItem.name).to.equal(tripData[0].name);
-        // expect(tripItem.posts).to.equal(tripData[0].posts);
         done();
       });
   });

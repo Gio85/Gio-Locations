@@ -1,6 +1,6 @@
 /* global api, describe, it, expect, before, after */
 require('../helper');
-// const atob = require('atob');
+const atob = require('atob');
 
 const User = require('../../../models/user');
 
@@ -52,18 +52,18 @@ describe('POST /api/login', () => {
       });
   });
 
-  // it('should return a valid token', done => {
-  //   api
-  //     .post('/api/login')
-  //     .set('Accept', 'application/json')
-  //     .send(userData[0])
-  //     .end((err, res) => {
-  //       expect(res.body.token).to.be.a('string');
-  //       const payload = JSON.parse(atob(res.body.token.split('.')[1]));
-  //       expect(payload).to.be.an('object');
-  //       expect(payload.userId).to.be.a('string');
-  //       expect(payload.userId).to.equal(user.id);
-  //       done();
-  //     });
-  // });
+  it('should return a valid token', done => {
+    api
+      .post('/api/login')
+      .set('Accept', 'application/json')
+      .send(userData[0])
+      .end((err, res) => {
+        expect(res.body.token).to.be.a('string');
+        const payload = JSON.parse(atob(res.body.token.split('.')[1]));
+        expect(payload).to.be.an('object');
+        expect(payload.userId).to.be.a('string');
+        expect(payload.userId).to.equal(user.id);
+        done();
+      });
+  });
 });
