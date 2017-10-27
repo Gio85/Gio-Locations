@@ -6,13 +6,14 @@ const locationSchema = new mongoose.Schema({
     lng: { type: Number }
   },
   name: { type: String },
+  address: { type: String },
   cost: { type: Number }
 });
 
 const postSchema = new mongoose.Schema({
-  place: { type: String, required: true },
+  title: { type: String, required: true },
   body: { type: String, required: true },
-  dataTime: { type: Date },
+  date: { type: Date },
   image: { type: String },
   locations: [{ locationSchema }]
 }, {
@@ -22,6 +23,7 @@ const postSchema = new mongoose.Schema({
 const tripSchema = new mongoose.Schema({
   description: { type: String, required: true },
   name: { type: String },
+  image: { type: String },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   posts: [ postSchema ]
 }, {
