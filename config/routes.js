@@ -4,8 +4,8 @@ const users = require('../controllers/users');
 const auth = require('../controllers/auth');
 const oauth = require('../controllers/oauth');
 const secureRoute = require('../lib/secureRoute');
-// const messages = require('../controllers/messages');
-// const imageUpload = require('../lib/imageUpload');
+const conversations = require('../controllers/conversations');
+
 
 router.route('/trips')
   .get(trips.index)
@@ -31,6 +31,15 @@ router.route('/oauth/facebook')
 router.route('/users/:userId')
   .get(secureRoute, users.show);
 
+router.route('/conversations')
+  .get(secureRoute, conversations.conversationsIndex);
+
+router.route('/conversations/:id')
+  .get(secureRoute, conversations.conversationsShow)
+  .delete(conversations.conversationsDelete);
+
+router.route('/messages')
+  .post(secureRoute, conversations.messagesCreate);
 
 router.all('/*', (req, res) => res.notFound());
 
