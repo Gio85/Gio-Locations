@@ -33,7 +33,7 @@ function facebook(req, res, next) {
         .then(user => {
           if(!user) {
             user = new User({
-              name: profile.name,
+              username: profile.name,
               facebookId: profile.id,
               image: profile.picture.data.url,
               email: profile.email

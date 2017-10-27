@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: 'Name is required' },
+  username: { type: String, required: 'Username is required' },
   homeLocation: { type: String },
   email: { type: String, required: 'Email is required', unique: 'Email address already taken' },
   password: { type: String }
@@ -16,19 +16,19 @@ userSchema
   });
 
 // ***************** I am going to use them later on ***************************
-// userSchema
-//   .virtual('messages', {
-//     ref: 'Message',
-//     localField: '_id',
-//     foreignField: 'to'
-//   });
-//
-// userSchema
-//   .virtual('sentMessages', {
-//     ref: 'Message',
-//     localField: '_id',
-//     foreignField: 'from'
-//   });
+userSchema
+  .virtual('messages', {
+    ref: 'Message',
+    localField: '_id',
+    foreignField: 'to'
+  });
+
+userSchema
+  .virtual('sentMessages', {
+    ref: 'Message',
+    localField: '_id',
+    foreignField: 'from'
+  });
 // *********************************************************************************
 
 userSchema
