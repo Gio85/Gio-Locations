@@ -2,17 +2,16 @@ import React from 'react';
 
 import BackButton from '../utility/BackButton';
 import DragDrop from '../utility/DragDrop';
-import Autocomplete from '../utility/Autocomplete';
 
-function TripsForm({ handleSubmit, handleChange, trip, errors, history, getAutocompleteInfo }) {
+
+function TripsForm({ handleSubmit, handleChange, trip, errors, history }) {
   return (
     <div className="row">
       <div className="page-banner col-md-12">
         <BackButton history={history} />
       </div>
       <form onSubmit={handleSubmit} className="col-md-6">
-        <Autocomplete getAutocompleteInfo={getAutocompleteInfo}/>
-        <div className={errors.title ? 'form-group has-error' : 'form-group'}>
+        <div className={errors.name ? 'form-group has-error' : 'form-group'}>
           <label htmlFor="name">Location</label>
           <input
             type="text"
@@ -22,7 +21,7 @@ function TripsForm({ handleSubmit, handleChange, trip, errors, history, getAutoc
             value={trip.name}
             onChange={handleChange}
           />
-          {errors.title && <small className="has-error">{errors.title}</small>}
+          {errors.name && <small className="has-error">{errors.name}</small>}
         </div>
         <div className={errors.title ? 'form-group has-error' : 'form-group'}>
           <label htmlFor="description">Description</label>

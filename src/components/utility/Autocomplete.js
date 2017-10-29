@@ -15,6 +15,10 @@ class Autocomplete extends React.Component {
   render() {
     return (
       <input
+        type="text"
+        className="form-control"
+        id="locations"
+        name="locations"
         ref={element => this.autocompleteInput = element}
       />
     );
