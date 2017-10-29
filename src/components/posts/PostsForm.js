@@ -4,7 +4,7 @@ import BackButton from '../utility/BackButton';
 import DragDrop from '../utility/DragDrop';
 import Autocomplete from '../utility/Autocomplete';
 
-function TripsForm({ handleSubmit, handleChange, post, errors, history, getAutocompleteInfo }) {
+function PostsForm({ handleSubmit, handleChange, post, errors, history, getAutocompleteInfo }) {
   return (
     <div className="row">
       <div className="page-banner col-md-12">
@@ -65,7 +65,7 @@ function TripsForm({ handleSubmit, handleChange, post, errors, history, getAutoc
               className="form-control"
               id="name"
               name="name"
-              value={post.location}
+              value={post.locations.name}
               onChange={handleChange}
             />
             {errors.location && <small className="has-error">{errors.location}</small>}
@@ -73,7 +73,7 @@ function TripsForm({ handleSubmit, handleChange, post, errors, history, getAutoc
           <div className={errors.location ? 'form-group has-error' : 'form-group'}>
             <label htmlFor="name">Location</label>
             <Autocomplete
-              value={post.location}
+              value={post.locations.location}
               onChange={handleChange}
               getAutocompleteInfo={getAutocompleteInfo}
             />
@@ -86,7 +86,7 @@ function TripsForm({ handleSubmit, handleChange, post, errors, history, getAutoc
               className="form-control"
               id="cost"
               name="cost"
-              value={post.location}
+              value={post.locations.cost}
               onChange={handleChange}
             />
             {errors.location && <small className="has-error">{errors.location}</small>}
@@ -101,4 +101,4 @@ function TripsForm({ handleSubmit, handleChange, post, errors, history, getAutoc
   );
 }
 
-export default TripsForm;
+export default PostsForm;

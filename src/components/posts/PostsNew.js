@@ -6,7 +6,21 @@ import PostsForm from './PostsForm';
 
 class PostsNew extends React.Component {
   state = {
-    post: {},
+    post: {
+      title: '',
+      body: '',
+      date: '',
+      image: '',
+      locations: {
+        name: '',
+        address: '',
+        cost: '',
+        location: {
+          lat: '',
+          lng: ''
+        }
+      }
+    },
     errors: {}
   }
 

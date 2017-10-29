@@ -7,7 +7,7 @@ import TripsForm from './TripsForm';
 class TripsNew extends React.Component {
   state = {
     trip: {
-      location: '',
+      name: '',
       description: '',
       test: {}
     },
