@@ -6,7 +6,7 @@ import PostsForm from './PostsForm';
 
 class PostsNew extends React.Component {
   state = {
-    post: {
+    data: {
       title: '',
       body: '',
       date: '',
@@ -24,13 +24,47 @@ class PostsNew extends React.Component {
     errors: {}
   }
 
-  getAutocompleteInfo = (place) => {
-    this.setState({ locations: { location: place.geometry.location.toJSON(), name: place.name, address: place.formatted_address }}, () => console.log(this.state));
+  getAutocompleteInfo = (index, place) => {
+    const { lat, lng } = place.geometry.location.toJSON();
+    const { formatted_address: address, name } = place;
+
+    this.setState(prevState => {
+      const locations = prevState.data.locations.map((location, i) => {
+        if(i === index) Object.assign(location, { location: { lat, lng }, address, name });
+        return location;
+      });
+
+      const data = Object.assign({}, this.state.data, { locations });
+      this.setState({ data });
+    });
   }
 
+  handleLocationChange = (index, key, value) => {
+    const locations = this.state.data.locations.map((location, i) => {
+      if(index === i) location[key] = value;
+      return location;
+    });
+
+    const data = Object.assign({}, this.state.data, { locations });
+    this.setState({ data });
+  }
+
+  // handle `normal` form inputs
   handleChange = ({ target: { name, value } }) => {
-    const post = Object.assign({}, this.state.post, { [name]: value });
-    this.setState({ post });
+    const data = Object.assign({}, this.state.data, { [name]: value });
+    this.setState({ data });
+  }
+
+  addLocation = () => {
+    this.setState(prevState => {
+      const locations = prevState.data.locations.concat({
+        name: '',
+        cost: '',
+        location: { lat: '', lng: '' }
+      });
+      const data = Object.assign({}, this.state.data, { locations });
+      return { data };
+    });
   }
 
 
@@ -38,7 +72,7 @@ class PostsNew extends React.Component {
     e.preventDefault();
 
     Axios
-      .post('/api/trips/:id/posts', this.state.post, {
+      .data('/api/trips/:id/datas', this.state.data, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
       .then(() => this.props.history.push('/'))
@@ -48,12 +82,12 @@ class PostsNew extends React.Component {
   render() {
     return (
       <PostsForm
-        history={this.props.history}
-        handleSubmit={this.handleSubmit}
+        handleSumbit={this.handleSumbit}
         handleChange={this.handleChange}
-        post={this.state.post}
-        errors={this.state.errors}
-        getAutocompleteInfo={this.getAutocompleteInfo}
+        handleLocationChange={this.handleLocationChange}
+        handleAutocomplete={this.handleAutocomplete}
+        data={this.state.data}
+        addLocation={this.addLocation}
       />
     );
   }

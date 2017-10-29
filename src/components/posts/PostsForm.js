@@ -2,9 +2,9 @@ import React from 'react';
 
 import BackButton from '../utility/BackButton';
 import DragDrop from '../utility/DragDrop';
-import Autocomplete from '../utility/Autocomplete';
+import Location from '../utility/Location';
 
-function PostsForm({ handleSubmit, handleChange, post, errors, history, getAutocompleteInfo }) {
+function PostsForm({ handleSubmit, handleChange, handleLocationChange, handleAutocomplete, data, addLocation, errors }) {
   return (
     <div className="row">
       <div className="page-banner col-md-12">
@@ -18,7 +18,7 @@ function PostsForm({ handleSubmit, handleChange, post, errors, history, getAutoc
             className="form-control"
             id="title"
             name="title"
-            value={post.title}
+            value={data.title}
             onChange={handleChange}
           />
           {errors.title && <small className="has-error">{errors.title}</small>}
@@ -30,7 +30,7 @@ function PostsForm({ handleSubmit, handleChange, post, errors, history, getAutoc
             className="form-control"
             id="body"
             name="body"
-            value={post.body}
+            value={data.body}
             onChange={handleChange}
           ></textarea>
           {errors.body && <small className="has-error">{errors.body}</small>}
@@ -42,7 +42,7 @@ function PostsForm({ handleSubmit, handleChange, post, errors, history, getAutoc
             className="form-control"
             id="date"
             name="date"
-            value={post.date}
+            value={data.date}
             onChange={handleChange}
           />
           {errors.date && <small
@@ -52,45 +52,22 @@ function PostsForm({ handleSubmit, handleChange, post, errors, history, getAutoc
           <label htmlFor="image">Image</label>
           <DragDrop
             onChange={handleChange}
-            value={post.base64 || post.imageSRC}
+            value={data.base64 || data.imageSRC}
           />
           {errors.image && <small className="has-error">{errors.image}</small>}
         </div>
         <div className="form-group">
           <label htmlFor="location">Location</label>
-          <div className={errors.location ? 'form-group has-error' : 'form-group'}>
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              name="name"
-              value={post.locations.name}
-              onChange={handleChange}
-            />
-            {errors.location && <small className="has-error">{errors.location}</small>}
-          </div>
-          <div className={errors.location ? 'form-group has-error' : 'form-group'}>
-            <label htmlFor="name">Location</label>
-            <Autocomplete
-              value={post.locations.location}
-              onChange={handleChange}
-              getAutocompleteInfo={getAutocompleteInfo}
-            />
-            {errors.location && <small className="has-error">{errors.location}</small>}
-          </div>
-          <div className={errors.location ? 'form-group has-error' : 'form-group'}>
-            <label htmlFor="cost">Cost</label>
-            <input
-              type="number"
-              className="form-control"
-              id="cost"
-              name="cost"
-              value={post.locations.cost}
-              onChange={handleChange}
-            />
-            {errors.location && <small className="has-error">{errors.location}</small>}
-          </div>
+          <input name="title" value={data.title} placeholder="title" onChange={handleChange} />
+          {data.locations.map((location, i) =>
+            <Location
+              key={i}
+              {...location}
+              index={i}
+              handleLocationChange={handleLocationChange}
+              handleAutocomplete={handleAutocomplete}
+            />)}
+          <button type="button" onClick={addLocation}>+</button>
         </div>
 
         <div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import GoogleMap from './components/GoogleMap';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 import Navbar from './components/utility/Navbar';
@@ -21,7 +20,6 @@ class App extends React.Component {
             <h1><Link to="/">Trips</Link></h1>
             <Navbar />
             <hr />
-            {/* <i className="fa fa-trip" aria-hidden="true"></i> */}
           </header>
           <main>
             <Routes />
