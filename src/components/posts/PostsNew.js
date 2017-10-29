@@ -11,7 +11,7 @@ class PostsNew extends React.Component {
       body: '',
       date: '',
       image: '',
-      locations: {
+      locations: [{
         name: '',
         address: '',
         cost: '',
@@ -19,7 +19,7 @@ class PostsNew extends React.Component {
           lat: '',
           lng: ''
         }
-      }
+      }]
     },
     errors: {}
   }
@@ -75,7 +75,7 @@ class PostsNew extends React.Component {
       .data('/api/trips/:id/datas', this.state.data, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/trips/:id'))
       .catch(err => this.setState({ errors: err.response.data.errors}, () => console.log(this.state)));
   }
 
@@ -85,7 +85,7 @@ class PostsNew extends React.Component {
         handleSumbit={this.handleSumbit}
         handleChange={this.handleChange}
         handleLocationChange={this.handleLocationChange}
-        handleAutocomplete={this.handleAutocomplete}
+        getAutocompleteInfo={this.getAutocompleteInfo}
         data={this.state.data}
         addLocation={this.addLocation}
       />
