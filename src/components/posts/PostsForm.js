@@ -10,7 +10,7 @@ function PostsForm({ handleSubmit, handleChange, handleLocationChange, getAutoco
         <BackButton history={history} />
       </div>
       <form onSubmit={handleSubmit} className="col-md-6">
-        <div className={errors ? 'form-group has-error' : 'form-group'}>
+        <div className={errors.title ? 'form-group has-error' : 'form-group'}>
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -21,9 +21,9 @@ function PostsForm({ handleSubmit, handleChange, handleLocationChange, getAutoco
             value={data.title}
             onChange={handleChange}
           />
-          {errors && <small className="has-error">{errors}</small>}
+          {errors.title && <small className="has-error">{errors.title}</small>}
         </div>
-        <div className={errors ? 'form-group has-error' : 'form-group'}>
+        <div className={errors.body ? 'form-group has-error' : 'form-group'}>
           <label htmlFor="body">Description</label>
           <textarea
             type="textarea"
@@ -34,9 +34,9 @@ function PostsForm({ handleSubmit, handleChange, handleLocationChange, getAutoco
             value={data.body}
             onChange={handleChange}
           ></textarea>
-          {errors && <small className="has-error">{errors}</small>}
+          {errors.body && <small className="has-error">{errors.body}</small>}
         </div>
-        <div className={errors ? 'form-group has-error' : 'form-group'}>
+        <div className={errors.date ? 'form-group has-error' : 'form-group'}>
           <label htmlFor="date">Date</label>
           <input
             type="date"
@@ -46,24 +46,24 @@ function PostsForm({ handleSubmit, handleChange, handleLocationChange, getAutoco
             value={data.date}
             onChange={handleChange}
           />
-          {errors && <small
-            className="has-error">{errors}</small>}
+          {errors.date && <small
+            className="has-error">{errors.date}</small>}
         </div>
-        <div className={errors ? 'form-group has-error' : 'form-group'}>
+        <div className={errors.image ? 'form-group has-error' : 'form-group'}>
           <label htmlFor="image">Image</label>
           <DragDrop
             onChange={handleChange}
             value={data.base64 || data.imageSRC}
           />
-          {errors && <small className="has-error">{errors}</small>}
+          {errors.image && <small className="has-error">{errors.image}</small>}
         </div>
         <div className="form-group">
           <label htmlFor="location">Location</label>
           <input
             className="form-control"
-            name="title"
-            value={data.title}
-            placeholder="title"
+            name="nameLocation"
+            value={data.locations.nameLocation}
+            placeholder="name location"
             onChange={handleChange}
           />
           {data.locations.map((location, i) =>

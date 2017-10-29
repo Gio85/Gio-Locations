@@ -1,25 +1,25 @@
 const Trip = require('../models/trip');
 
-function createRoute(req, res) {
+function createRoute(req, res, next) {
 
   if(req.file) req.body.image = req.file.filename;
 
   Trip
     .create(req.body)
     .then(trip => res.status(201).json(trip))
-    .catch(err => res.status(500).json(err));
+    .catch(next);
 }
 
-function indexRoute(req, res) {
+function indexRoute(req, res, next) {
   Trip
     .find()
     .populate('createdBy')// in order to show the username inside the trips Index page
     .exec()
     .then(trips => res.json(trips))
-    .catch(err => res.status(500).json(err));
+    .catch(next);
 }
 
-function showRoute(req, res) {
+function showRoute(req, res, next) {
   Trip
     .findById(req.params.id)
     .populate('createdBy')// in order to show the username inside the trips show page
@@ -29,10 +29,10 @@ function showRoute(req, res) {
 
       res.json(trip);
     })
-    .catch(err => res.status(500).json(err));
+    .catch(next);
 }
 
-function updateRoute(req, res) {
+function updateRoute(req, res, next) {
 
   if(req.file) req.body.image = req.file.filename;
 
@@ -46,10 +46,10 @@ function updateRoute(req, res) {
       return trip.save();
     })
     .then((trip) => res.json(trip))
-    .catch(err => res.status(500).json(err));
+    .catch(next);
 }
 
-function deleteRoute(req, res) {
+function deleteRoute(req, res, next) {
   Trip
     .findById(req.params.id)
     .exec()
@@ -58,11 +58,11 @@ function deleteRoute(req, res) {
 
       return trip.remove();
     })
-    .then(() => res.status(204).end())
-    .catch(err => res.status(500).json(err));
+    .then(() => res.sendStatus(204))
+    .catch(next);
 }
 
-function tripsPostsCreate(req, res) {
+function tripsPostsCreate(req, res, next) {
   req.body.user = req.currentUser;
   Trip
     .findById(req.params.id)
@@ -71,11 +71,11 @@ function tripsPostsCreate(req, res) {
       trip.posts.push(req.body); // saved the new post into the array
       return trip.save();
     })
-    .then(trip => res.redirect(`/trips/${trip.id}`))
-    .catch(err => res.render('error', { err }));
+    .then(trip => res.json(trip))
+    .catch(next);
 }
 
-function tripsPostsDelete(req, res) {
+function tripsPostsDelete(req, res, next) {
   Trip
     .findById(req.params.id)
     .exec()
@@ -84,8 +84,8 @@ function tripsPostsDelete(req, res) {
       post.remove();
       return trip.save();
     })
-    .then(trip => res.redirect(`/trips/${trip.id}`))
-    .catch(err => res.render('error', { err }));
+    .then(trip => res.json(trip))
+    .catch(next);
 }
 
 module.exports = {

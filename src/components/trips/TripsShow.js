@@ -40,6 +40,11 @@ class TripsShow extends React.Component {
               <i className="fa fa-pencil" aria-hidden="true"></i>Edit
             </Link>
           </button>
+          <button className="standard-button">
+            <Link to={`/trips/${this.state.trip.id}/posts`}>
+              <i className="fa fa-pencil" aria-hidden="true"></i>Add Post
+            </Link>
+          </button>
           <button className="main-button" onClick={() => this.deleteTrip(this.state.trip)}>
             <i className="fa fa-trash" aria-hidden="true"></i>Delete
           </button>

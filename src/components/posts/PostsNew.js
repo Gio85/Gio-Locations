@@ -60,6 +60,7 @@ class PostsNew extends React.Component {
       const locations = prevState.data.locations.concat({
         name: '',
         cost: '',
+        address: '',
         location: { lat: '', lng: '' }
       });
       const data = Object.assign({}, this.state.data, { locations });
@@ -70,24 +71,25 @@ class PostsNew extends React.Component {
 
   handleSubmit = (e) =>{
     e.preventDefault();
-
+    console.log('sending data...');
     Axios
-      .data('/api/trips/:id/datas', this.state.data, {
+      .post(`/api/trips/${this.props.match.params.id}/posts`, this.state.data, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
-      .then(() => this.props.history.push('/trips/:id'))
+      .then(() => this.props.history.push('/'))
       .catch(err => this.setState({ errors: err.response.data.errors}, () => console.log(this.state)));
   }
 
   render() {
     return (
       <PostsForm
-        handleSumbit={this.handleSumbit}
+        handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         handleLocationChange={this.handleLocationChange}
         getAutocompleteInfo={this.getAutocompleteInfo}
         data={this.state.data}
         addLocation={this.addLocation}
+        errors={this.state.errors}
       />
     );
   }
