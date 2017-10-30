@@ -53,10 +53,12 @@ function tripsPostsUpdate(req, res, next) {
   Trip
     .findById(req.params.id)
     .exec()
-    .then((food) => {
-      if(!food) return res.notFound();
-      food = Object.assign(food, req.body);
-      return food.save();
+    .then((trip) => {
+      if(!trip) return res.notFound();
+
+      const post = trip.posts.id(req.params.postId);
+      Object.assign(post, req.body);
+      return trip.save();
     })
     .then(food => res.json(food))
     .catch(next);
@@ -90,11 +92,24 @@ function tripsPostsDelete(req, res, next) {
     .catch(next);
 }
 
+function tripsPostsShow(req, res, next){
+  Trip
+    .findById(req.params.id)
+    .exec()
+    .then((trip) => {
+      const post = trip.posts.id(req.params.postId);
+
+      return res.json(post);
+    })
+    .catch(next);
+}
+
 module.exports = {
   create: createRoute,
   index: indexRoute,
   show: showRoute,
   delete: deleteRoute,
+  postsShow: tripsPostsShow,
   postsCreate: tripsPostsCreate,
   postsUpdate: tripsPostsUpdate,
   postsDelete: tripsPostsDelete

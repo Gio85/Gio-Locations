@@ -20,7 +20,8 @@ router.route('/trips/:id')
 router.post('/trips/:id/posts', imageUpload, trips.postsCreate);
 
 router.route('/trips/:id/posts/:postId')
-  // .put(secureRoute, trips.postsEdit)
+  .get(trips.postsShow)
+  .put(secureRoute, trips.postsUpdate)
   .delete(secureRoute, trips.postsDelete);
 
 router.route('/register')

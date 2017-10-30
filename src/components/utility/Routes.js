@@ -6,6 +6,7 @@ import TripsIndex from '../trips/TripsIndex';
 import TripsShow from  '../trips/TripsShow';
 import TripsNew from '../trips/TripsNew';
 import PostsNew from '../posts/PostsNew';
+import PostsEdit from '../posts/PostsEdit';
 import Login from '../auth/Login';
 import Register from '../auth/Register';
 import NotFound from './NotFound';
@@ -17,6 +18,7 @@ const Routes = () => {
       <Route path="/trips/new" component={TripsNew} />
       <Route exact path="/trips/:id" component={TripsShow} />
       <ProtectedRoute exact path="/trips/:id/posts" component={PostsNew} />
+      <ProtectedRoute exact path="/trips/:id/posts/:postId/edit" component={PostsEdit} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route component={NotFound} />

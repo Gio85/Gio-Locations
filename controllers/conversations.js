@@ -32,7 +32,7 @@ function messagesCreate(req, res) {
   // req.body = { text: 'hello', to: '82937sdhjd38932472389jsdf', from: '87294hfskdf3897498w3' }
 
   Conversation
-    .findOne({ $or: [{ from: req.body.to }, { to: req.body.to }]})
+    .findOne({ $or: [{ from: req.body.to, to: req.body.from }, { to: req.body.to, from: req.body.from }]})
     .then((conversation) => {
       // if no conversation is found
       if(!conversation) {

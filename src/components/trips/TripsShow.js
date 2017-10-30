@@ -18,6 +18,7 @@ class TripsShow extends React.Component {
       .catch(err => console.log(err));
   }
 
+
   deleteTrip = () => {
     Axios
       .delete(`/api/trips/${this.props.match.params.id}`, {
@@ -25,6 +26,7 @@ class TripsShow extends React.Component {
       })
       .then(() => this.props.history.push('/'));
   }
+
 
   deleteTripPost = id => {
     Axios
@@ -50,6 +52,7 @@ class TripsShow extends React.Component {
             this.state.trip.posts.map((post) => {
               return(
                 <div key={post.id} >
+                  <p>{post.title}</p>
                   <p>{post.body}</p>
                   <p>{post.date}</p>
                   <img src={post.imageSRC} className="col-md-6" />
@@ -62,6 +65,11 @@ class TripsShow extends React.Component {
                       </div>
                     );
                   })}
+                  <button className="standard-button">
+                    <Link to={`/trips/${this.state.trip.id}/posts/${post.id}/edit`}>
+                      <i className="fa fa-pencil" aria-hidden="true"></i>Edit the post
+                    </Link>
+                  </button>
                   <button onClick={() => this.deleteTripPost(post.id)}>Delete</button>
                 </div>
               );
