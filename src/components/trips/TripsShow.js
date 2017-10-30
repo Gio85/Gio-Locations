@@ -1,31 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
-
+import GoogleMap from '../utility/GoogleMap';
 import BackButton from '../utility/BackButton';
 
 class TripsShow extends React.Component {
   state = {
-    trip: [{
-      name: '',
-      description: '',
-      image: '',
-      posts: [{
-        title: '',
-        body: '',
-        date: '',
-        image: '',
-        locations: [{
-          name: '',
-          address: '',
-          cost: '',
-          location: {
-            lat: '',
-            lng: ''
-          }
-        }]
-      }]
-    }],
+    trip: {},
     errors: {}
   }
 
@@ -50,11 +31,32 @@ class TripsShow extends React.Component {
           <BackButton history={this.props.history} />
         </div>
         <div className="image-tile col-md-6">
-          <img src={this.state.trip.imageSRC} className="img-responsive" />
+          <img src={this.state.trip.imageSRC} className="img-responsive"/>
         </div>
         <div className="col-md-6">
           <h2>{this.state.trip.name}</h2>
-          {/* <p>{this.state.trip.posts.body}</p> */}
+          {this.state.trip.posts &&
+            this.state.trip.posts.map((post) => {
+              console.log(post);
+              return(
+                <div key={post.id} >
+                  <p>{post.body}</p>
+                  <p>{post.date}</p>
+                  <img src={post.imageSRC} className="col-md-6" />
+                  {post.locations.map((location) => {
+                    return (
+                      <div key={location.id} >
+                        <p>{location.name}</p>
+                        <p>£ {location.cost}</p>
+                        <GoogleMap center={{ lat: location.location.lat, lng: location.location.lng }}/>
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })
+
+          }
           <button className="standard-button">
             <Link to={`/trips/${this.state.trip.id}/edit`}>
               <i className="fa fa-pencil" aria-hidden="true"></i>Edit
