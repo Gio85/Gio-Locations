@@ -71,7 +71,6 @@ class PostsNew extends React.Component {
 
   handleSubmit = (e) =>{
     e.preventDefault();
-    console.log('sending data...');
     Axios
       .post(`/api/trips/${this.props.match.params.id}/posts`, this.state.data, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }

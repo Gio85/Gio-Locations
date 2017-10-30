@@ -5,7 +5,7 @@ const locationSchema = new mongoose.Schema({
     lat: { type: Number },
     lng: { type: Number }
   },
-  nameLocation: { type: String },
+  name: { type: String },
   address: { type: String },
   cost: { type: Number }
 });
@@ -15,7 +15,7 @@ const postSchema = new mongoose.Schema({
   body: { type: String, required: true },
   date: { type: Date },
   image: { type: String },
-  locations: [{ locationSchema }]
+  locations: [ locationSchema ]
 }, {
   timestamps: true
 });

@@ -6,7 +6,27 @@ import BackButton from '../utility/BackButton';
 
 class TripsShow extends React.Component {
   state = {
-    trip: {}
+    trip: [{
+      name: '',
+      description: '',
+      image: '',
+      posts: [{
+        title: '',
+        body: '',
+        date: '',
+        image: '',
+        locations: [{
+          name: '',
+          address: '',
+          cost: '',
+          location: {
+            lat: '',
+            lng: ''
+          }
+        }]
+      }]
+    }],
+    errors: {}
   }
 
   componentWillMount() {
@@ -23,7 +43,7 @@ class TripsShow extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log('inside tripsShow component', this.state);
     return (
       <div className="row">
         <div className="page-banner col-md-12">
@@ -33,8 +53,8 @@ class TripsShow extends React.Component {
           <img src={this.state.trip.imageSRC} className="img-responsive" />
         </div>
         <div className="col-md-6">
-          <h3>{this.state.trip.name}</h3>
-          <h4>{this.state.trip.description}</h4>
+          <h2>{this.state.trip.name}</h2>
+          {/* <p>{this.state.trip.posts.body}</p> */}
           <button className="standard-button">
             <Link to={`/trips/${this.state.trip.id}/edit`}>
               <i className="fa fa-pencil" aria-hidden="true"></i>Edit
