@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import GoogleMap from '../utility/GoogleMap';
 import BackButton from '../utility/BackButton';
+import Auth from '../../lib/Auth';
 
 class TripsShow extends React.Component {
   state = {
@@ -17,9 +18,9 @@ class TripsShow extends React.Component {
       .catch(err => console.log(err));
   }
 
-  deleteTrip = ({ id }) => {
+  deleteTrip = () => {
     Axios
-      .delete(`/api/trips/${id}`)
+      .delete(`/api/trips/${this.props.match.params.id}`)
       .then(() => this.props.history.push('/'));
   }
 
@@ -67,9 +68,9 @@ class TripsShow extends React.Component {
               <i className="fa fa-pencil" aria-hidden="true"></i>Add Post
             </Link>
           </button>
-          <button className="main-button" onClick={() => this.deleteTrip(this.state.trip)}>
+          {Auth.isAuthenticated() && <button className="main-button" onClick={this.deleteTrip}>
             <i className="fa fa-trash" aria-hidden="true"></i>Delete
-          </button>
+          </button>}
         </div>
       </div>
     );

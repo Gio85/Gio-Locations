@@ -18,7 +18,10 @@ router.route('/trips/:id')
   .delete(secureRoute, trips.delete);
 
 router.post('/trips/:id/posts', imageUpload, trips.postsCreate);
-router.delete('/trips/:id/posts/:postId', secureRoute, trips.postsDelete);
+
+router.route('/trips/:id/posts/:postId')
+  .put(secureRoute, trips.postsEdit)
+  .delete(secureRoute, trips.postsDelete);
 
 router.route('/register')
   .post(auth.register);

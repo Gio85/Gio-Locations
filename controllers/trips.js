@@ -32,22 +32,6 @@ function showRoute(req, res, next) {
     .catch(next);
 }
 
-function updateRoute(req, res, next) {
-
-  if(req.file) req.body.image = req.file.filename;
-
-  Trip
-    .findById(req.params.id)
-    .exec()
-    .then((trip) => {
-      if(!trip) return res.notFound();
-
-      trip = Object.assign(trip, req.body);
-      return trip.save();
-    })
-    .then((trip) => res.json(trip))
-    .catch(next);
-}
 
 function deleteRoute(req, res, next) {
   Trip
@@ -60,6 +44,23 @@ function deleteRoute(req, res, next) {
     })
     .then(() => res.sendStatus(204))
     .catch(next);
+}
+
+function tripsPostsUpdate(req, res, next) {
+
+  if(req.file) req.body.image = req.file.filename;
+
+  Trip
+    .findById(req.params.id)
+    .exec()
+    .then((food) => {
+      if(!food) return res.notFound();
+      food = Object.assign(food, req.body);
+      return food.save();
+    })
+    .then(food => res.json(food))
+    .catch(next);
+
 }
 
 function tripsPostsCreate(req, res, next) {
@@ -93,8 +94,8 @@ module.exports = {
   create: createRoute,
   index: indexRoute,
   show: showRoute,
-  update: updateRoute,
   delete: deleteRoute,
   postsCreate: tripsPostsCreate,
+  postsUpdate: tripsPostsUpdate,
   postsDelete: tripsPostsDelete
 };
