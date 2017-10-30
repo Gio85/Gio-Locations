@@ -14,13 +14,13 @@ router.route('/trips')
 
 router.route('/trips/:id')
   .get(trips.show)
-  .put(secureRoute, trips.update)
+  .put(secureRoute)
   .delete(secureRoute, trips.delete);
 
 router.post('/trips/:id/posts', imageUpload, trips.postsCreate);
 
 router.route('/trips/:id/posts/:postId')
-  .put(secureRoute, trips.postsEdit)
+  // .put(secureRoute, trips.postsEdit)
   .delete(secureRoute, trips.postsDelete);
 
 router.route('/register')

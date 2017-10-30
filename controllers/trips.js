@@ -82,7 +82,7 @@ function tripsPostsDelete(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then(trip => {
-      const post = trip.posts.id(req.params.postId);
+      const post = trip.posts.find(post => post.id === req.params.postId);
       post.remove();
       return trip.save();
     })

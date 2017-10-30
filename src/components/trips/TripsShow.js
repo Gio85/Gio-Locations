@@ -20,7 +20,17 @@ class TripsShow extends React.Component {
 
   deleteTrip = () => {
     Axios
-      .delete(`/api/trips/${this.props.match.params.id}`)
+      .delete(`/api/trips/${this.props.match.params.id}`, {
+        headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
+      })
+      .then(() => this.props.history.push('/'));
+  }
+
+  deleteTripPost = id => {
+    Axios
+      .delete(`/api/trips/${this.props.match.params.id}/posts/${id}`, {
+        headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
+      })
       .then(() => this.props.history.push('/'));
   }
 
@@ -38,7 +48,6 @@ class TripsShow extends React.Component {
           <h2>{this.state.trip.name}</h2>
           {this.state.trip.posts &&
             this.state.trip.posts.map((post) => {
-              console.log(post);
               return(
                 <div key={post.id} >
                   <p>{post.body}</p>
@@ -53,6 +62,7 @@ class TripsShow extends React.Component {
                       </div>
                     );
                   })}
+                  <button onClick={() => this.deleteTripPost(post.id)}>Delete</button>
                 </div>
               );
             })
