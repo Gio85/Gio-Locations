@@ -1,6 +1,5 @@
 import React from 'react';
 import Axios from 'axios';
-import Auth from '../../lib/Auth';
 import { Link } from 'react-router-dom';
 
 class TripsIndex extends React.Component {
@@ -20,9 +19,6 @@ class TripsIndex extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          {Auth.isAuthenticated() && <Link to="/trips/new" className="main-button">
-            <i className="fa fa-plus" aria-hidden="true"></i>Add Trip
-          </Link>}
           {this.state.trips.map(trip => {
             return(
               <div key={trip.id} className="col-sm">

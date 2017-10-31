@@ -14,7 +14,12 @@ const Navbar = ({ history }) => {
   return(
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link className="navbar-brand" to="/">Trips</Link>
-      <ul className="navbar-nav justify-content-end">
+      <ul className="navbar-nav right">
+        <li className="nav-item">
+          {Auth.isAuthenticated() && <Link to="/trips/new" className="main-button">
+            <i className="fa fa-plus" aria-hidden="true"></i>Add Trip
+          </Link>}
+        </li>
         <li className="nav-item">
           {!Auth.isAuthenticated() && <Link to="/login" className="nav-link">Login</Link>}
         </li>

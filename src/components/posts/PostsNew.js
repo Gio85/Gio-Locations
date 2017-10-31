@@ -83,6 +83,7 @@ class PostsNew extends React.Component {
   render() {
     return (
       <PostsForm
+        history={this.props.history}
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         handleLocationChange={this.handleLocationChange}

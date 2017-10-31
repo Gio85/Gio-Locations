@@ -3,12 +3,10 @@ import BackButton from '../utility/BackButton';
 import DragDrop from '../utility/DragDrop';
 import Location from '../utility/Location';
 
-function PostsForm({ handleSubmit, handleChange, handleLocationChange, getAutocompleteInfo, data, addLocation, errors }) {
+function PostsForm({ handleSubmit, handleChange, handleLocationChange, getAutocompleteInfo, data, addLocation, errors, history }) {
   return (
     <div className="row">
-      <div className="page-banner col-md-12">
-        <BackButton history={history} />
-      </div>
+      <BackButton history={history} />
       <form onSubmit={handleSubmit} className="col-md-6">
         <div className={errors.title ? 'form-group has-error' : 'form-group'}>
           <label htmlFor="title">Title</label>

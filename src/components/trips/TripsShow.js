@@ -61,27 +61,29 @@ class TripsShow extends React.Component {
         </div>
         <div className="image-tile col-md-6">
           {this.state.trip.createdBy && <h3>Created by: {this.state.trip.createdBy.username}</h3>}
-          {Auth.isAuthenticated() && this.isOwner() &&
+          <div className="btn-group" role="group" aria-label="Basic example">
+            {Auth.isAuthenticated() && this.isOwner() &&
             <button
               onClick={this.createConversation}
-              className="btn btn-primary">Message
+              className="btn btn-outline-primary">Message
             </button>
-          }
-          {Auth.isAuthenticated() && this.isCreatedBy() &&
-          <button className="standard-button">
+            }
+            {Auth.isAuthenticated() && this.isCreatedBy() &&
+          <button className="btn btn-outline-primary">
             <Link to={`/trips/${this.state.trip.id}/posts`}>
               <i className="fa fa-pencil" aria-hidden="true"></i> Add a new post
             </Link>
           </button>}
-          {Auth.isAuthenticated() && this.isCreatedBy() &&
+            {Auth.isAuthenticated() && this.isCreatedBy() &&
             <button
-              className="main-button"
+              className="btn btn-outline-danger"
               onClick={this.deleteTrip}>
               <i className="fa fa-trash" aria-hidden="true"></i> Delete
             </button>
-          }
+            }
+          </div>
           <h2>{this.state.trip.name}</h2>
-          <img src={this.state.trip.imageSRC} className="img-responsive"/>
+          <img src={this.state.trip.imageSRC} className="img-fluid"/>
         </div>
         {this.state.trip.posts &&
             this.state.trip.posts.map((post) => {
