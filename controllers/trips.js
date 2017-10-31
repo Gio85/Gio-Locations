@@ -1,7 +1,7 @@
 const Trip = require('../models/trip');
 
 function createRoute(req, res, next) {
-
+  req.body.createdBy = req.currentUser;
   if(req.file) req.body.image = req.file.filename;
 
   Trip

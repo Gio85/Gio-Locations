@@ -10,7 +10,7 @@ const imageUpload = require('../lib/imageUpload');
 
 router.route('/trips')
   .get(trips.index)
-  .post(imageUpload, trips.create);
+  .post(imageUpload, secureRoute, trips.create);
 
 router.route('/trips/:id')
   .get(trips.show)
@@ -37,7 +37,8 @@ router.route('/users/:userId')
   .get(secureRoute, users.show);
 
 router.route('/conversations')
-  .get(secureRoute, conversations.conversationsIndex);
+  .get(secureRoute, conversations.conversationsIndex)
+  .post(secureRoute, conversations.conversationsCreate);
 
 router.route('/conversations/:id')
   .get(secureRoute, conversations.conversationsShow);

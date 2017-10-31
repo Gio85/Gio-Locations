@@ -11,6 +11,19 @@ function conversationsIndex(req, res) {
     .catch(err => res.status(500).json(err));
 }
 
+function conversationsCreate(req, res) {
+  Conversation.findOne({ $or: [
+    { from: req.body.createdBy, to: req.currentUser },// check this
+    { to: req.body.createdBy, from: req.currentUser }// check this
+  ]})
+    .then(conversation => {
+      if(!conversation) return Conversation.create({ from: req.currentUser, to: req.body.createdBy });//check this
+      else return conversation;
+    })
+    .then(conversation => res.json(conversation))
+    .catch(err => res.status(500).json(err));
+}
+
 function conversationsShow(req, res) {
   Conversation
     .findById(req.params.id)
@@ -70,6 +83,7 @@ function conversationsDelete(req, res) {
 
 module.exports = {
   messagesCreate,
+  conversationsCreate,
   conversationsIndex,
   conversationsShow,
   conversationsDelete

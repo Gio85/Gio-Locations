@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Axios from 'axios';
 import GoogleMap from '../utility/GoogleMap';
 import BackButton from '../utility/BackButton';
@@ -34,6 +34,15 @@ class TripsShow extends React.Component {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
       .then(() => this.props.history.push('/'));
+  }
+
+  createConversation = () => {
+    Axios
+      .post('/api/conversations', { createdBy: this.state.trip.createdBy.id }, {
+        headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
+      })
+      .then(res => this.props.history.push(`/conversations/${res.data.id}`))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -86,6 +95,7 @@ class TripsShow extends React.Component {
               <i className="fa fa-pencil" aria-hidden="true"></i>Add Post
             </Link>
           </button>
+          <button onClick={this.createConversation} className="standard-button">Message</button>
           {Auth.isAuthenticated() && <button className="main-button" onClick={this.deleteTrip}>
             <i className="fa fa-trash" aria-hidden="true"></i>Delete
           </button>}
@@ -95,4 +105,4 @@ class TripsShow extends React.Component {
   }
 }
 
-export default TripsShow;
+export default withRouter(TripsShow);

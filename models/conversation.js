@@ -13,7 +13,6 @@ const messageSchema = new mongoose.Schema({
 const conversationSchema = new mongoose.Schema({
   from: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   to: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  trip: { type: mongoose.Schema.ObjectId, ref: 'Trip' },
   messages: [ messageSchema ]
 }, {
   timestamps: true
