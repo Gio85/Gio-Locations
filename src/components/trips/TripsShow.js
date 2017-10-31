@@ -95,10 +95,19 @@ class TripsShow extends React.Component {
               <i className="fa fa-pencil" aria-hidden="true"></i>Add Post
             </Link>
           </button>
-          <button onClick={this.createConversation} className="standard-button">Message</button>
-          {Auth.isAuthenticated() && <button className="main-button" onClick={this.deleteTrip}>
-            <i className="fa fa-trash" aria-hidden="true"></i>Delete
-          </button>}
+          {Auth.isAuthenticated() &&
+            <button
+              className="main-button"
+              onClick={this.deleteTrip}>
+              <i className="fa fa-trash" aria-hidden="true"></i>Delete
+            </button>
+          }
+          {Auth.isAuthenticated() &&
+            <button
+              onClick={this.createConversation}
+              className="standard-button">Message
+            </button>
+          }
         </div>
       </div>
     );
