@@ -8,7 +8,8 @@ class TripsNew extends React.Component {
   state = {
     trip: {
       name: '',
-      description: ''
+      description: '',
+      createdBy: ''
     },
     errors: {}
   }
