@@ -1,6 +1,19 @@
 @import './bootstrap/bootstrap.scss';
-
-
+body{
+  font-family: Georgia sans-serif;
+}
+.navbar-nav .nav-item li a{
+  color: white;
+}
+a:hover{
+  text-decoration: none;
+  // color:
+}
+.nav li a:hover{
+  text-decoration: none;
+  background-color: transparent;
+  color: white;
+}
 .google-map {
   height: 250px;
   width: 250px;

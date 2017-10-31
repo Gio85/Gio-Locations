@@ -48,6 +48,9 @@ class TripsShow extends React.Component {
   isOwner =() => {
     return this.state.trip.createdBy && this.state.trip.createdBy.id !== Auth.getPayload().userId;
   }
+  isCreatedBy =() => {
+    return this.state.trip.createdBy && this.state.trip.createdBy.id === Auth.getPayload().userId;
+  }
 
   render() {
     console.log('inside tripsShow component', this.state.trip.createdBy);
@@ -62,6 +65,19 @@ class TripsShow extends React.Component {
             <button
               onClick={this.createConversation}
               className="btn btn-primary">Message
+            </button>
+          }
+          {Auth.isAuthenticated() && this.isCreatedBy() &&
+          <button className="standard-button">
+            <Link to={`/trips/${this.state.trip.id}/posts`}>
+              <i className="fa fa-pencil" aria-hidden="true"></i> Add a new post
+            </Link>
+          </button>}
+          {Auth.isAuthenticated() && this.isCreatedBy() &&
+            <button
+              className="main-button"
+              onClick={this.deleteTrip}>
+              <i className="fa fa-trash" aria-hidden="true"></i> Delete
             </button>
           }
           <img src={this.state.trip.imageSRC} className="img-responsive"/>
@@ -85,32 +101,17 @@ class TripsShow extends React.Component {
                       </div>
                     );
                   })}
+                  {Auth.isAuthenticated() && this.isCreatedBy() &&
                   <button className="standard-button">
                     <Link to={`/trips/${this.state.trip.id}/posts/${post.id}/edit`}>
                       <i className="fa fa-pencil" aria-hidden="true"></i>Edit the post
                     </Link>
-                  </button>
-                  <button onClick={() => this.deleteTripPost(post.id)}>Delete</button>
+                  </button>}
+                  {Auth.isAuthenticated() && this.isCreatedBy() &&
+                  <button onClick={() => this.deleteTripPost(post.id)}>Delete</button>}
                 </div>
               );
             })
-          }
-          <button className="standard-button">
-            <Link to={`/trips/${this.state.trip.id}/edit`}>
-              <i className="fa fa-pencil" aria-hidden="true"></i>Edit
-            </Link>
-          </button>
-          <button className="standard-button">
-            <Link to={`/trips/${this.state.trip.id}/posts`}>
-              <i className="fa fa-pencil" aria-hidden="true"></i>Add Post
-            </Link>
-          </button>
-          {Auth.isAuthenticated() &&
-            <button
-              className="main-button"
-              onClick={this.deleteTrip}>
-              <i className="fa fa-trash" aria-hidden="true"></i>Delete
-            </button>
           }
         </div>
       </div>

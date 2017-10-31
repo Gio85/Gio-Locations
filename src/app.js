@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Navbar from './components/utility/Navbar';
 import Routes from './components/utility/Routes';
 
-import 'bootstrap-css-only';
 import 'font-awesome/css/font-awesome.css';
 
 import './scss/style.scss';
@@ -15,13 +14,11 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div>
           <header>
-            <h1><Link to="/">Trips</Link></h1>
             <Navbar />
-            <hr />
           </header>
-          <main>
+          <main className="container">
             <Routes />
           </main>
         </div>
