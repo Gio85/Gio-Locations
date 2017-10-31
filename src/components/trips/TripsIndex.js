@@ -26,12 +26,15 @@ class TripsIndex extends React.Component {
           {this.state.trips.map(trip => {
             return(
               <div key={trip.id} className="col-sm">
-                <div className="col-sm">
-                  <Link to={`/trips/${trip.id}`}>
-                    <img src={trip.imageSRC} className="card-img-top" />
-                    <p>{trip.name}</p>
-                    <p>{trip.description}</p>
-                  </Link>
+                <div className="card">
+                  <img src={trip.imageSRC} className="card-img-top" />
+                  <div className="card-body">
+                    <h4 className="card-title">{trip.name}</h4>
+                    <p className="card-text">{trip.description}</p>
+                    <Link to={`/trips/${trip.id}`}>
+                      <button className="btn btn-primary">Read more...</button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             );

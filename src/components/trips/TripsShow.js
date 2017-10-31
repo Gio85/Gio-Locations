@@ -80,23 +80,22 @@ class TripsShow extends React.Component {
               <i className="fa fa-trash" aria-hidden="true"></i> Delete
             </button>
           }
+          <h2>{this.state.trip.name}</h2>
           <img src={this.state.trip.imageSRC} className="img-responsive"/>
         </div>
-        <div className="col-md-6">
-          <h2>{this.state.trip.name}</h2>
-          {this.state.trip.posts &&
+        {this.state.trip.posts &&
             this.state.trip.posts.map((post) => {
               return(
-                <div key={post.id} >
-                  <p>{post.title}</p>
+                <ul key={post.id} className="list-unstyled">
+                  <h3>{post.title}</h3>
                   <p>{post.body}</p>
                   <p>{post.date}</p>
                   <img src={post.imageSRC} className="col-md-6" />
                   {post.locations.map((location) => {
                     return (
                       <div key={location.id} >
-                        <p>{location.name}</p>
-                        <p>£ {location.cost}</p>
+                        <h2>{location.name}</h2>
+                        <h3>£ {location.cost}</h3>
                         <GoogleMap center={{ lat: location.location.lat, lng: location.location.lng }}/>
                       </div>
                     );
@@ -109,11 +108,10 @@ class TripsShow extends React.Component {
                   </button>}
                   {Auth.isAuthenticated() && this.isCreatedBy() &&
                   <button onClick={() => this.deleteTripPost(post.id)}>Delete</button>}
-                </div>
+                </ul>
               );
             })
-          }
-        </div>
+        }
       </div>
     );
   }
