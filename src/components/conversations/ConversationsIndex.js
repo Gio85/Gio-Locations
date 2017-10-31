@@ -24,7 +24,7 @@ class ConversationsIndex extends React.Component {
     return (
       <div className="row">
         {this.state.conversations.map(conversation => <div key={conversation.id}>
-          {/* <a href={`/conversations/${conversation.id}`}>{conversation.product.name}</a> */}
+          <a href={`/conversations/${conversation.id}`}>{conversation.from.username}</a>
         </div>)}
       </div>
     );

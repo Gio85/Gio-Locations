@@ -45,14 +45,25 @@ class TripsShow extends React.Component {
       .catch(err => console.log(err));
   }
 
+  isOwner =() => {
+    return this.state.trip.createdBy && this.state.trip.createdBy.id !== Auth.getPayload().userId;
+  }
+
   render() {
-    console.log('inside tripsShow component', this.state);
+    console.log('inside tripsShow component', this.state.trip.createdBy);
     return (
       <div className="row">
         <div className="page-banner col-md-12">
           <BackButton history={this.props.history} />
         </div>
         <div className="image-tile col-md-6">
+          {this.state.trip.createdBy && <h3>Created by: {this.state.trip.createdBy.username}</h3>}
+          {Auth.isAuthenticated() && this.isOwner() &&
+            <button
+              onClick={this.createConversation}
+              className="btn btn-primary">Message
+            </button>
+          }
           <img src={this.state.trip.imageSRC} className="img-responsive"/>
         </div>
         <div className="col-md-6">
@@ -83,7 +94,6 @@ class TripsShow extends React.Component {
                 </div>
               );
             })
-
           }
           <button className="standard-button">
             <Link to={`/trips/${this.state.trip.id}/edit`}>
@@ -100,12 +110,6 @@ class TripsShow extends React.Component {
               className="main-button"
               onClick={this.deleteTrip}>
               <i className="fa fa-trash" aria-hidden="true"></i>Delete
-            </button>
-          }
-          {Auth.isAuthenticated() &&
-            <button
-              onClick={this.createConversation}
-              className="standard-button">Message
             </button>
           }
         </div>

@@ -37,7 +37,7 @@ class ConversationsShow extends React.Component {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => this.setState({ conversation: res.data }, this.stickyScroll))
-      .catch(err => this.setState({ errors: err.response.data.errors }), console.log('inside handleSubmit-conversationsShow'));
+      .catch(err => this.setState({ errors: err.response.data.errors }));
 
   }
 

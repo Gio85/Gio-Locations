@@ -31,7 +31,6 @@ function conversationsShow(req, res, next) {
     .exec()
     .then((conversation) => {
       if(!conversation) return res.notFound();
-
       res.json(conversation);
     })
     .catch(next);
@@ -49,7 +48,7 @@ function messagesCreate(req, res, next) {
     .then(() => {
       return Conversation
         .findById(req.params.id)
-        .populate('to from messages.from');
+        .populate('to from messages.from message.to');
     })
     .then(conversation => res.json(conversation))
     .catch(next);
@@ -61,7 +60,6 @@ function conversationsDelete(req, res, next) {
     .exec()
     .then((conversation) => {
       if(!conversation) return res.notFound();
-
       return conversation.remove();
     })
     .then(() => res.status(204).end())
