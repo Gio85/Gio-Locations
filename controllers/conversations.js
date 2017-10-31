@@ -1,6 +1,6 @@
 const Conversation = require('../models/conversation');
 
-function conversationsIndex(req, res) {
+function conversationsIndex(req, res, next) {
   Conversation
     .find({
       $or: [{ from: req.currentUser }, { to: req.currentUser }]
@@ -8,10 +8,10 @@ function conversationsIndex(req, res) {
     .populate('to from messages.from')// in order to show the username inside the trips Index page
     .exec()
     .then(conversations => res.json(conversations))
-    .catch(err => res.status(500).json(err));
+    .catch(next);
 }
 
-function conversationsCreate(req, res) {
+function conversationsCreate(req, res, next) {
   Conversation.findOne({ $or: [
     { from: req.body.createdBy, to: req.currentUser },// check this
     { to: req.body.createdBy, from: req.currentUser }// check this
@@ -21,55 +21,41 @@ function conversationsCreate(req, res) {
       else return conversation;
     })
     .then(conversation => res.json(conversation))
-    .catch(err => res.status(500).json(err));
+    .catch(next);
 }
 
-function conversationsShow(req, res) {
-  console.log('YOYOY', req.params);
+function conversationsShow(req, res, next) {
   Conversation
     .findById(req.params.id)
-    .populate('to from')
+    .populate('to from messages.from')
     .exec()
     .then((conversation) => {
-      console.log('CONVO', conversation);
       if(!conversation) return res.notFound();
 
       res.json(conversation);
     })
-    .catch(err => res.status(500).json(err));
+    .catch(next);
 }
 
-function messagesCreate(req, res) {
+function messagesCreate(req, res, next) {
   req.body.from = req.currentUser.id;
 
-  // send the other users id as req.body.to
-  // the content of the message will be req.body.text
-  // req.body = { text: 'hello', to: '82937sdhjd38932472389jsdf', from: '87294hfskdf3897498w3' }
-
   Conversation
-    .findOne({ $or: [{ from: req.body.to, to: req.body.from }, { to: req.body.to, from: req.body.from }]})
-    .then((conversation) => {
-      // if no conversation is found
-      if(!conversation) {
-        // create a new one using req.body
-        return Conversation
-          .create(req.body);
-      } else {
-        // else just return the existing conversation
-        return conversation;
-      }
-    })
+    .findById(req.params.id)
     .then(conversation => {
       conversation.messages.push(req.body);
       return conversation.save();
     })
-    .then(conversation => {
-      res.status(201).json(conversation);
+    .then(() => {
+      return Conversation
+        .findById(req.params.id)
+        .populate('to from messages.from');
     })
-    .catch(err => res.status(500).json(err));
+    .then(conversation => res.json(conversation))
+    .catch(next);
 }
 
-function conversationsDelete(req, res) {
+function conversationsDelete(req, res, next) {
   Conversation
     .findById(req.params.id)
     .exec()
@@ -79,7 +65,7 @@ function conversationsDelete(req, res) {
       return conversation.remove();
     })
     .then(() => res.status(204).end())
-    .catch(err => res.status(204).json(err));
+    .catch(next);
 }
 
 

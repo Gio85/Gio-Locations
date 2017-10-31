@@ -42,9 +42,8 @@ router.route('/conversations')
 
 router.route('/conversations/:id')
   .get(secureRoute, conversations.conversationsShow);
-// .delete(conversations.conversationsDelete);
 
-router.route('/messages')
+router.route('/conversations/:id/messages')
   .post(secureRoute, conversations.messagesCreate);
 
 router.all('/*', (req, res) => res.notFound());

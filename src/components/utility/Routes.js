@@ -8,7 +8,8 @@ import TripsNew from '../trips/TripsNew';
 import PostsNew from '../posts/PostsNew';
 import PostsEdit from '../posts/PostsEdit';
 import UsersShow from '../users/UsersShow';
-import ConversationsShow from '../conversations/conversationsShow';
+import ConversationsShow from '../conversations/ConversationsShow';
+import ConversationsIndex from '../conversations/ConversationsIndex';
 import Login from '../auth/Login';
 import Register from '../auth/Register';
 import NotFound from './NotFound';
@@ -21,6 +22,7 @@ const Routes = () => {
       <Route exact path="/trips/:id" component={TripsShow} />
       <ProtectedRoute exact path="/trips/:id/posts" component={PostsNew} />
       <ProtectedRoute exact path="/trips/:id/posts/:postId/edit" component={PostsEdit} />
+      <ProtectedRoute exact path="/conversations" component={ConversationsIndex} />
       <ProtectedRoute exact path="/conversations/:id" component={ConversationsShow} />
       <Route exact path="/users/:userId" component={UsersShow} />
       <Route exact path="/login" component={Login} />
