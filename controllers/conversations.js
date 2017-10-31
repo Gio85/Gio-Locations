@@ -25,11 +25,13 @@ function conversationsCreate(req, res) {
 }
 
 function conversationsShow(req, res) {
+  console.log('YOYOY', req.params);
   Conversation
     .findById(req.params.id)
     .populate('to from')
     .exec()
     .then((conversation) => {
+      console.log('CONVO', conversation);
       if(!conversation) return res.notFound();
 
       res.json(conversation);
