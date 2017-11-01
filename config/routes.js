@@ -1,4 +1,4 @@
- const router = require('express').Router();
+const router = require('express').Router();
 const trips = require('../controllers/trips');
 const users = require('../controllers/users');
 const auth = require('../controllers/auth');
