@@ -1,32 +1,96 @@
 @import './bootstrap/bootstrap.scss';
+
+$sans-serif: 'Muli', sans-serif;
+$serif: 'Playfair Display', serif;
+
 body{
-  font-family: Georgia sans-serif;
-}
-.navbar-nav .nav-item li a{
-  color: white;
-}
-a:hover{
-  text-decoration: none;
-  // color:
+  font-family: $sans-serif;
+  background-color: #fafafa;
 }
 
-.nav {
-  &ul{
-    &.right{
-      float: right;
-    }
+img {
+  max-width: 100%;
+}
+
+.box {
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.post-container {
+  font-family: $serif;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  &:not(:last-of-type) {
+    padding-bottom: 20px;
+    border-bottom: 1px solid lightgrey;
   }
 }
-.nav li a:hover{
-  text-decoration: none;
-  background-color: transparent;
+
+.trip-banner-image {
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   color: white;
+  margin: 20px 0;
+  a, a:hover, a:focus {
+    color: white;
+  }
 }
+
+.trip-locations {
+  margin-top: 20px;
+}
+
+.trip-locations-map {
+  margin-top: 20px;
+}
+
+nav {
+  background-color: white;
+  margin-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+}
+
+//  nav
+.navWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.navLogo {
+  justify-self: flex-start;
+  align-self: flex-start;
+  left: 0;
+}
+
+.navItem {
+  list-style: none;
+  margin-right: 5px;
+}
+
+.navLink {
+  background-color: #fff;
+  border: none;
+  line-height: 1;
+  padding: 0;
+}
+
+
+
 .card{
   width: 500px;
   // height: 100px;
 }
 .google-map {
   height: 250px;
-  width: 250px;
+  width: 100%;
 }

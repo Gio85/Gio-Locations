@@ -4,6 +4,7 @@ import Axios from 'axios';
 import GoogleMap from '../utility/GoogleMap';
 import BackButton from '../utility/BackButton';
 import Auth from '../../lib/Auth';
+import Moment from 'react-moment';
 
 class TripsShow extends React.Component {
   state = {
@@ -54,67 +55,91 @@ class TripsShow extends React.Component {
   }
 
   render() {
+    const styles = {
+      backgroundImage: `url(${this.state.trip.imageSRC})`
+    };
+
     return (
-      <div className="row">
-        <div className="page-banner col-md-12">
-          <BackButton history={this.props.history} />
-        </div>
-        <div className="image-tile col-md-6">
-          {this.state.trip.createdBy && <h3>
-          Created by:<Link to={`/users/${this.state.trip.createdBy.id}`}> {this.state.trip.createdBy.username}</Link></h3>}
-          {Auth.isAuthenticated() && this.isOwner() &&
-            <button
-              onClick={this.createConversation}
-              className="btn btn-outline-primary">Message
-            </button>
-          }
-          <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
-            {Auth.isAuthenticated() && this.isCreatedBy() &&
-          <button className="btn btn-outline-primary">
-            <Link to={`/trips/${this.state.trip.id}/posts`}>
-              <i className="fa fa-pencil" aria-hidden="true"></i> Add a new post
-            </Link>
-          </button>}
-            {Auth.isAuthenticated() && this.isCreatedBy() &&
-            <button
-              className="btn btn-outline-danger"
-              onClick={this.deleteTrip}>
-              <i className="fa fa-trash" aria-hidden="true"></i> Delete
-            </button>
-            }
+      <div className="box">
+        <div className="row">
+          <div className="col-md-12">
+            <BackButton history={this.props.history} />
           </div>
-          <h2>{this.state.trip.name}</h2>
-          <img src={this.state.trip.imageSRC} className="img-fluid"/>
+          <div className="col-md-12">
+            <div className="trip-banner-image" style={styles}>
+              <h1>{this.state.trip.name}</h1>
+              <h2>{this.state.trip.description}</h2>
+              {this.state.trip.createdBy && <h3>
+              Created by: <Link to={`/users/${this.state.trip.createdBy.id}`}>{this.state.trip.createdBy.username}</Link></h3>}
+            </div>
+          </div>
+          <div className="image-tile col-md-6">
+
+            {Auth.isAuthenticated() && this.isOwner() &&
+              <button
+                onClick={this.createConversation}
+                className="btn btn-outline-primary">Message
+              </button>
+            }
+            <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
+              {Auth.isAuthenticated() && this.isCreatedBy() &&
+            <button className="btn btn-outline-primary">
+              <Link to={`/trips/${this.state.trip.id}/posts`}>
+                <i className="fa fa-pencil" aria-hidden="true"></i> Add a new post
+              </Link>
+            </button>}
+              {Auth.isAuthenticated() && this.isCreatedBy() &&
+              <button
+                className="btn btn-outline-danger"
+                onClick={this.deleteTrip}>
+                <i className="fa fa-trash" aria-hidden="true"></i> Delete
+              </button>
+              }
+            </div>
+
+          </div>
         </div>
-        {this.state.trip.posts &&
-            this.state.trip.posts.map((post) => {
-              return(
-                <ul key={post.id} className="list-unstyled">
-                  <h3>{post.title}</h3>
-                  <p>{post.body}</p>
-                  <p>{post.date}</p>
-                  <img src={post.imageSRC} className="col-md-6" />
-                  {post.locations.map((location) => {
-                    return (
-                      <div key={location.id} >
-                        <h2>{location.name}</h2>
-                        <h3>£ {location.cost}</h3>
-                        <GoogleMap center={{ lat: location.location.lat, lng: location.location.lng }}/>
+        <div className="row">
+          {this.state.trip.posts &&
+              this.state.trip.posts.map((post) => {
+                return(
+                  <div className="col-md-12 post-container" key={post.id}>
+                    <div className="row">
+                      <div className="col-md-6">
+                        <img src={post.imageSRC} />
                       </div>
-                    );
-                  })}
-                  {Auth.isAuthenticated() && this.isCreatedBy() &&
-                  <button className="standard-button">
-                    <Link to={`/trips/${this.state.trip.id}/posts/${post.id}/edit`}>
-                      <i className="fa fa-pencil" aria-hidden="true"></i>Edit the post
-                    </Link>
-                  </button>}
-                  {Auth.isAuthenticated() && this.isCreatedBy() &&
-                  <button onClick={() => this.deleteTripPost(post.id)}>Delete</button>}
-                </ul>
-              );
-            })
-        }
+                      <div className="col-md-6">
+                        <h3>{post.title}</h3>
+                        <Moment format="MMMM Do YYYY">{post.date}</Moment>
+                        <p>{post.body}</p>
+                      </div>
+                      <div className="col-md-6 trip-locations">
+                        {post.locations.map((location) => {
+                          return (
+                            <div key={location.id} >
+                              <h2>{location.name}</h2>
+                              <h3>£ {location.cost}</h3>
+                            </div>
+                          );
+                        })}
+                        {Auth.isAuthenticated() && this.isCreatedBy() &&
+                        <button className="standard-button">
+                          <Link to={`/trips/${this.state.trip.id}/posts/${post.id}/edit`}>
+                            <i className="fa fa-pencil" aria-hidden="true"></i>Edit the post
+                          </Link>
+                        </button>}
+                        {Auth.isAuthenticated() && this.isCreatedBy() &&
+                        <button onClick={() => this.deleteTripPost(post.id)}>Delete</button>}
+                      </div>
+                      <div className="col-md-6 trip-locations-map">
+                        {this.state.trip.posts && <GoogleMap center={{ lat: this.state.trip.posts[0].locations[0].location.lat, lng: this.state.trip.posts[0].locations[0].location.lng }}/>}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+          }
+        </div>
       </div>
     );
   }

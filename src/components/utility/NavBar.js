@@ -12,28 +12,28 @@ const Navbar = ({ history }) => {
   }
 
   return(
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <Link className="navbar-brand" to="/">Trips</Link>
-      <ul className="navbar-nav right">
-        <li className="nav-item">
-          <Link to="/trips" className="main-button">
+    <nav>
+      <Link className="navLogo" to="/">Trips</Link>
+      <ul className="navWrap">
+        <li className="navItem">
+          <Link to="/trips">
             All Trips
           </Link>
         </li>
         {' '}
-        <li className="nav-item">
-          {Auth.isAuthenticated() && <Link to="/trips/new" className="main-button">
+        <li className="navItem">
+          {Auth.isAuthenticated() && <Link to="/trips/new">
             <i className="fa fa-plus" aria-hidden="true"></i>Add Trip
           </Link>}
         </li>
-        <li className="nav-item">
-          {!Auth.isAuthenticated() && <Link to="/login" className="nav-link">Login</Link>}
+        <li className="navItem">
+          {!Auth.isAuthenticated() && <Link to="/login">Login</Link>}
         </li>
-        <li className="nav-item">
-          {!Auth.isAuthenticated() && <Link to="/register" className="nav-link">Register</Link>}
+        <li className="navItem">
+          {!Auth.isAuthenticated() && <Link to="/register">Register</Link>}
         </li>
-        <li className="nav-item">
-          {Auth.isAuthenticated() && <button onClick={logout} className="nav-link">Logout</button>}
+        <li className="navItem">
+          {Auth.isAuthenticated() && <button onClick={logout} className="navLink">Logout</button>}
         </li>
       </ul>
     </nav>

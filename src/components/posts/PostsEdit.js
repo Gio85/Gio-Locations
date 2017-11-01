@@ -83,7 +83,7 @@ class PostsEdit extends React.Component {
       .put(`/api/trips/${this.props.match.params.id}/posts/${this.props.match.params.postId}`, this.state.data, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push(`/trips/${this.props.match.params.id}`))
       .catch(err => this.setState({ errors: err.response.data.errors}, () => console.log(this.state)));
   }
 
@@ -97,6 +97,7 @@ class PostsEdit extends React.Component {
         data={this.state.data}
         addLocation={this.addLocation}
         errors={this.state.errors}
+        history={this.props.history}
       />
     );
   }

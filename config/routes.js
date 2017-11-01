@@ -34,7 +34,7 @@ router.route('/oauth/facebook')
   .post(oauth.facebook);
 
 router.route('/users/:userId')
-  .get(secureRoute, users.show);
+  .get(users.show);
 
 router.route('/conversations')
   .get(secureRoute, conversations.conversationsIndex)

@@ -12,7 +12,7 @@ userSchema
   .virtual('trips', { // 'trips' is the name of the virtual
     ref: 'Trip', // 'Trip' is the name of the model
     localField: '_id', // use the local _id field from this schema
-    foreignField: 'postedBy' // to match up with the createdBy field from the Trip schema
+    foreignField: 'createdBy' // to match up with the createdBy field from the Trip schema
   });
 
 // ***************** I am going to use them later on ***************************
