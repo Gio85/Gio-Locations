@@ -56,14 +56,6 @@ function PostsForm({ handleSubmit, handleChange, handleLocationChange, getAutoco
           {errors.image && <small className="has-error">{errors.image}</small>}
         </div>
         <div className="form-group">
-          <label htmlFor="location">Location</label>
-          <input
-            className="form-control"
-            name="nameLocation"
-            value={data.locations.nameLocation}
-            placeholder="name location"
-            onChange={handleChange}
-          />
           {data.locations.map((location, i) =>
             <Location
               key={i}

@@ -9,7 +9,8 @@ import Moment from 'react-moment';
 class TripsShow extends React.Component {
   state = {
     trip: {},
-    errors: {}
+    errors: {},
+    selectedLocation: {}
   }
 
   componentWillMount() {
@@ -53,6 +54,8 @@ class TripsShow extends React.Component {
   isCreatedBy =() => {
     return this.state.trip.createdBy && this.state.trip.createdBy.id === Auth.getPayload().userId;
   }
+
+  highlightMarker = (selectedLocation) => this.setState({ selectedLocation });
 
   render() {
     const styles = {
@@ -114,9 +117,12 @@ class TripsShow extends React.Component {
                       <div className="col-md-6 trip-locations">
                         {post.locations.map((location) => {
                           return (
-                            <div key={location.id} >
-                              <h2>{location.name}</h2>
-                              <h3>£ {location.cost}</h3>
+                            <div key={location.id} className="trip-location" onClick={() => this.highlightMarker(location)}>
+                              <div>
+                                <h2>{location.name}</h2>
+                                <p>{location.address}</p>
+                              </div>
+                              <h3>£{location.cost}</h3>
                             </div>
                           );
                         })}
@@ -130,7 +136,7 @@ class TripsShow extends React.Component {
                         <button onClick={() => this.deleteTripPost(post.id)}>Delete</button>}
                       </div>
                       <div className="col-md-6 trip-locations-map">
-                        {this.state.trip.posts && <GoogleMap center={{ lat: this.state.trip.posts[0].locations[0].location.lat, lng: this.state.trip.posts[0].locations[0].location.lng }}/>}
+                        {this.state.trip.posts && <GoogleMap post={post} selectedLocation={this.state.selectedLocation}/>}
                       </div>
                     </div>
                   </div>

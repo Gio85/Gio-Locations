@@ -21,7 +21,7 @@ class OAuthButton extends React.Component {
 
     // send the code to the API
     Axios.post(this.provider.url, data)
-      .then(res => Auth.setToken(res.data.Token))
+      .then(res => Auth.setToken(res.data.token))
       .then(() => localStorage.removeItem('provider'))
       .then(() => this.props.history.replace(this.props.history.pathname))//per evitare che quando l'user clicca la freccia per andare indietro, riceva un errore in console e venga indirizzato alla pagina di login
       .then(() => this.props.history.push('/'))
