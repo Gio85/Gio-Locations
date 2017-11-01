@@ -8,6 +8,8 @@ class Register extends React.Component {
     user: {
       username: '',
       email: '',
+      homeLocation: '',
+      image: '',
       password: '',
       passwordConfirmation: ''
     },

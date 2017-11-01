@@ -33,7 +33,8 @@ class UsersShow extends React.Component {
     return(
       <div className="row">
         <div className="col-md-12">
-          <h1>{this.state.user.username} Profile Page</h1>
+          <h1>{this.state.user.username}</h1>
+          <img src={this.state.user.imageSRC} />
           {Auth.isAuthenticated() && this.props.match.params.userId !== Auth.getPayload().userId &&
             <button
               onClick={this.createConversation}

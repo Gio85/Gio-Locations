@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
   username: { type: String, required: 'Username is required' },
   homeLocation: { type: String },
+  image: { type: String },
   email: { type: String, required: 'Email is required', unique: 'Email address already taken' },
   password: { type: String }
 });
@@ -13,6 +14,14 @@ userSchema
     ref: 'Trip', // 'Trip' is the name of the model
     localField: '_id', // use the local _id field from this schema
     foreignField: 'createdBy' // to match up with the createdBy field from the Trip schema
+  });
+
+userSchema
+  .virtual('imageSRC')
+  .get(function getImageSRC() {
+    if(!this.image) return null;
+    if(this.image.match(/^http/)) return this.image;
+    return `https://s3-eu-west-1.amazonaws.com/${process.env.AWS_BUCKET_NAME}/${this.image}`;
   });
 
 // ***************** I am going to use them later on ***************************
