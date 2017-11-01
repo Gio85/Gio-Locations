@@ -3,8 +3,10 @@ const jwt = require('jsonwebtoken');
 const { secret } = require('../config/environment');
 
 function register(req, res, next) {
-  
+
   if(req.file) req.body.image = req.file.filename;
+  
+  console.log(req.file);
 
   User
     .create(req.body)

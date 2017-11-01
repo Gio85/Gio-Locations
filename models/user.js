@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
   username: { type: String, required: 'Username is required' },
   homeLocation: { type: String },
-  image: { type: String },
+  image: { type: String , required: 'the pic is required'},
   email: { type: String, required: 'Email is required', unique: 'Email address already taken' },
   password: { type: String }
 });
@@ -24,7 +24,6 @@ userSchema
     return `https://s3-eu-west-1.amazonaws.com/${process.env.AWS_BUCKET_NAME}/${this.image}`;
   });
 
-// ***************** I am going to use them later on ***************************
 userSchema
   .virtual('messages', {
     ref: 'Message',
@@ -38,7 +37,7 @@ userSchema
     localField: '_id',
     foreignField: 'from'
   });
-// *********************************************************************************
+
 
 userSchema
   .virtual('passwordConfirmation')

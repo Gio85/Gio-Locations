@@ -1,4 +1,4 @@
-const router = require('express').Router();
+ const router = require('express').Router();
 const trips = require('../controllers/trips');
 const users = require('../controllers/users');
 const auth = require('../controllers/auth');
@@ -25,7 +25,7 @@ router.route('/trips/:id/posts/:postId')
   .delete(secureRoute, trips.postsDelete);
 
 router.route('/register')
-  .post(auth.register);
+  .post(imageUpload, auth.register);
 
 router.route('/login')
   .post(auth.login);

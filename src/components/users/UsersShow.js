@@ -13,7 +13,7 @@ class UsersShow extends React.Component {
   componentDidMount() {
     Axios
       .get(`/api/users/${this.props.match.params.userId}`)
-      .then(res => this.setState({ user: res.data }, console.log('DID-MOUNT', res.data.trips)))
+      .then(res => this.setState({ user: res.data }, console.log('DID-MOUNT', res.data)))
       .catch(err => console.log(err));
   }
 
@@ -29,7 +29,7 @@ class UsersShow extends React.Component {
 
 
   render() {
-    console.log('RENDER', this.props);
+    console.log('RENDER', this.state);
     return(
       <div className="row">
         <div className="col-md-12">

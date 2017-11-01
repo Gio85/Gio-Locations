@@ -5,7 +5,6 @@ const { secret } = require('../config/environment');
 
 
 function facebook(req, res, next) {
-  console.log('in facebook');
   rp({
     method: 'POST',
     url: 'https://graph.facebook.com/v2.10/oauth/access_token',
