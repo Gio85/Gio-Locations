@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import Navbar from './components/utility/Navbar';
+import Navbar from './components/utility/NavBar';
 import Routes from './components/utility/Routes';
 
 import 'font-awesome/css/font-awesome.css';
