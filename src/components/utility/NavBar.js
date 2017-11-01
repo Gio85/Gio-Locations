@@ -16,6 +16,12 @@ const Navbar = ({ history }) => {
       <Link className="navbar-brand" to="/">Trips</Link>
       <ul className="navbar-nav right">
         <li className="nav-item">
+          <Link to="/trips" className="main-button">
+            All Trips
+          </Link>
+        </li>
+        {' '}
+        <li className="nav-item">
           {Auth.isAuthenticated() && <Link to="/trips/new" className="main-button">
             <i className="fa fa-plus" aria-hidden="true"></i>Add Trip
           </Link>}

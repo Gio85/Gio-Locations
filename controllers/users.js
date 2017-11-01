@@ -1,7 +1,7 @@
 const User = require('../models/user');
 
-function showRoute(req, res) {
-  console.log(req.params.userId);
+function showRoute(req, res, next) {
+  console.log('USER SHOW', req.params.userId);
   User
     .findById(req.params.userId)
     .populate('trips')
@@ -10,7 +10,7 @@ function showRoute(req, res) {
       if(!user) return res.notFound();
       res.json(user);
     })
-    .catch(err => res.status(500).json(err));
+    .catch(next);
 }
 
 module.exports = {

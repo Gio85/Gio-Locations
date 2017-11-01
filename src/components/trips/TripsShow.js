@@ -53,21 +53,21 @@ class TripsShow extends React.Component {
   }
 
   render() {
-    console.log('inside tripsShow component', this.state.trip.createdBy);
     return (
       <div className="row">
         <div className="page-banner col-md-12">
           <BackButton history={this.props.history} />
         </div>
         <div className="image-tile col-md-6">
-          {this.state.trip.createdBy && <h3>Created by: {this.state.trip.createdBy.username}</h3>}
-          <div className="btn-group" role="group" aria-label="Basic example">
-            {Auth.isAuthenticated() && this.isOwner() &&
+          {this.state.trip.createdBy && <h3>
+          Created by:<Link to={`/users/${this.state.trip.createdBy.id}`}> {this.state.trip.createdBy.username}</Link></h3>}
+          {Auth.isAuthenticated() && this.isOwner() &&
             <button
               onClick={this.createConversation}
               className="btn btn-outline-primary">Message
             </button>
-            }
+          }
+          <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
             {Auth.isAuthenticated() && this.isCreatedBy() &&
           <button className="btn btn-outline-primary">
             <Link to={`/trips/${this.state.trip.id}/posts`}>
