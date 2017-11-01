@@ -25,7 +25,6 @@ class PostsNew extends React.Component {
   }
 
   getAutocompleteInfo = (index, place) => {
-    console.log(index, place);
     const { lat, lng } = place.geometry.location.toJSON();
     const { formatted_address: address, name } = place;
 

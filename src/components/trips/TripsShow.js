@@ -74,7 +74,6 @@ class TripsShow extends React.Component {
             </div>
           </div>
           <div className="image-tile col-md-6">
-
             {Auth.isAuthenticated() && this.isOwner() &&
               <button
                 onClick={this.createConversation}
@@ -96,7 +95,6 @@ class TripsShow extends React.Component {
               </button>
               }
             </div>
-
           </div>
         </div>
         <div className="row">

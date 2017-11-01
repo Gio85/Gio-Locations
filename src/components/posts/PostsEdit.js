@@ -25,7 +25,6 @@ class PostsEdit extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     Axios
       .get(`/api/trips/${this.props.match.params.id}/posts/${this.props.match.params.postId}`)
       .then(res => this.setState({ data: res.data }))
