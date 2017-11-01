@@ -6,8 +6,11 @@ import BackButton from '../utility/BackButton';
 class UsersShow extends React.Component {
 
   state= {
+    trip: [],
     conversations: []
   }
+
+  componentDidMount
 
   createConversation = () => {
     Axios
@@ -18,7 +21,10 @@ class UsersShow extends React.Component {
       .catch(err => console.log(err));
   }
 
+
+
   render() {
+    console.log(this.props);
 
     return(
       <div className="row">
@@ -27,7 +33,7 @@ class UsersShow extends React.Component {
         </div>
         <div className="col-md-6">
           <h1>User Page Profile</h1>
-          {Auth.isAuthenticated() && this.isOwner() &&
+          {Auth.isAuthenticated() && this.props.match.params.userId !== Auth.getPayload().userId && 
             <button
               onClick={this.createConversation}
               className="btn btn-outline-primary">Message

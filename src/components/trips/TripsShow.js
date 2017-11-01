@@ -12,9 +12,10 @@ class TripsShow extends React.Component {
   }
 
   componentWillMount() {
+
     Axios
       .get(`/api/trips/${this.props.match.params.id}`)
-      .then(res => this.setState({ trip: res.data }))
+      .then(res => this.setState({ trip: res.data }, console.log(res.data)))
       .catch(err => console.log(err));
   }
 
