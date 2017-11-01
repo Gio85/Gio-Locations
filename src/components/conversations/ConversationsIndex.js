@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
+import { Link } from 'react-router-dom';
 
 
 class ConversationsIndex extends React.Component {
@@ -20,11 +21,17 @@ class ConversationsIndex extends React.Component {
         console.log(err);
       });
   }
+
+  getUser = (conversation) => {
+    const { userId } = Auth.getPayload();
+    return conversation.from.id === userId ? conversation.to : conversation.from;
+  }
+
   render() {
     return (
       <div className="row">
-        {this.state.conversations.map(conversation => <div key={conversation.id}>
-          <a href={`/conversations/${conversation.id}`}>{conversation.from.username}</a>
+        {this.state.conversations && this.state.conversations.map(conversation => <div key={conversation.id}>
+          <Link to={`/conversations/${conversation.id}`}>{this.getUser(conversation).username}</Link>
         </div>)}
       </div>
     );

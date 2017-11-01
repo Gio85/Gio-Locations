@@ -28,8 +28,9 @@ class UsersShow extends React.Component {
 
 
 
+
+
   render() {
-    console.log('RENDER', this.state);
     return(
       <div className="row">
         <div className="col-md-12">

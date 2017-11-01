@@ -32,6 +32,10 @@ const Navbar = ({ history }) => {
             {Auth.isAuthenticated() && <Link to={`/users/${Auth.getPayload().userId}`}>Profile</Link>}
           </li>
           <li className="navItem">
+            {Auth.isAuthenticated() && <Link to="/conversations">Conversations</Link>
+            }
+          </li>
+          <li className="navItem">
             {!Auth.isAuthenticated() && <Link to="/login">Login</Link>}
           </li>
           <li className="navItem">
