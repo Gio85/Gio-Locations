@@ -34,13 +34,14 @@ class OAuthButton extends React.Component {
 
   render () {
     return (
-      <a
-        className="btn btn-primary"
-        href={this.provider.authLink}
-        onClick={this.setProvider}
-      >
-        {this.props.children}
-      </a>
+      <div className="form-btn">
+        <a
+          href={this.provider.authLink}
+          onClick={this.setProvider}
+        >
+          {this.props.children}
+        </a>
+      </div>
     );
   }
 }

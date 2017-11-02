@@ -31,15 +31,16 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container box">
         <LoginForm
           credentials={this.state.credentials}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           error={this.state.error}
         />
-        <br />
+
         <OAuthButton provider="facebook">Login with Facebook</OAuthButton>
+
       </div>
     );
   }
