@@ -1,7 +1,6 @@
 /* global google */
 import React from 'react';
 
-
 class GoogleMap extends React.Component {
   componentDidMount() {
 
@@ -9,7 +8,7 @@ class GoogleMap extends React.Component {
     this.bounds = new google.maps.LatLngBounds();
 
     this.map = new google.maps.Map(this.mapCanvas, {
-      zoom: 6,
+      zoom: 4,
       center: this.props.center || { lat: 51.515276, lng: -0.072328}
     });
 

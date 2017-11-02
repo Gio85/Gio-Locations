@@ -3,6 +3,17 @@
   align-items: center;
   text-align: -webkit-center;
 }
+// .row{
+//   &.box{
+//     &.box-flex{
+//       h3{
+//         text-align: center;
+//         border-bottom: 1px solid black;
+//         width: 100%;
+//       }
+//     }
+//   }
+// }
 
 .tripForm-header {
   display: flex;

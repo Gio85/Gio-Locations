@@ -66,12 +66,12 @@ class TripsShow extends React.Component {
       <div className="container">
         <div className="box">
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-12 box-flex">
               <BackButton history={this.props.history} />
+              <h3>{this.state.trip.name}</h3>
             </div>
             <div className="col-md-12">
               <div className="trip-banner-image" style={styles}>
-                <h1>{this.state.trip.name}</h1>
                 <h2>{this.state.trip.description}</h2>
                 {this.state.trip.createdBy && <h3>
                 Created by: <Link to={`/users/${this.state.trip.createdBy.id}`}>{this.state.trip.createdBy.username}</Link></h3>}
@@ -127,14 +127,16 @@ class TripsShow extends React.Component {
                               </div>
                             );
                           })}
-                          {Auth.isAuthenticated() && this.isCreatedBy() &&
-                          <button className="standard-button">
+                          <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                            {Auth.isAuthenticated() && this.isCreatedBy() &&
+                          <button className="btn btn-outline-primary">
                             <Link to={`/trips/${this.state.trip.id}/posts/${post.id}/edit`}>
                               <i className="fa fa-pencil" aria-hidden="true"></i>Edit the post
                             </Link>
                           </button>}
-                          {Auth.isAuthenticated() && this.isCreatedBy() &&
-                          <button onClick={() => this.deleteTripPost(post.id)}>Delete</button>}
+                            {Auth.isAuthenticated() && this.isCreatedBy() &&
+                          <button className="btn btn-outline-danger" onClick={() => this.deleteTripPost(post.id)}>Delete</button>}
+                          </div>
                         </div>
                         <div className="col-md-6 trip-locations-map">
                           {this.state.trip.posts && <GoogleMap post={post} selectedLocation={this.state.selectedLocation}/>}
