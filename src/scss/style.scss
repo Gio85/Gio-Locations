@@ -13,6 +13,17 @@ body{
   background-color: #fafafa;
 }
 
+.homepage {
+  background-image: url('http://i.dailymail.co.uk/i/pix/2017/08/10/14/4322734800000578-4778448-image-a-58_1502371997636.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
 button {
   cursor: pointer;
 }
@@ -69,4 +80,18 @@ div.drag-drop {
 .google-map {
   height: 250px;
   width: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+  div .drag-drop div.dropzone {
+    height: 160px;
+    width: 160px;
+  }
+
+  nav {
+    justify-content: space-around;
+    &.navItem {
+      margin-right: 6px;
+    }
+  }
 }

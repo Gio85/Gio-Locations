@@ -31,7 +31,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <main>
+      <div className="container">
         <LoginForm
           credentials={this.state.credentials}
           handleChange={this.handleChange}
@@ -40,7 +40,7 @@ class Login extends React.Component {
         />
         <br />
         <OAuthButton provider="facebook">Login with Facebook</OAuthButton>
-      </main>
+      </div>
     );
   }
 }

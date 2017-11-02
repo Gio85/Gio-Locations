@@ -18,9 +18,14 @@
   margin: 0 auto;
   .form-group{
     label{
-      width: 200px;
+      width: 143px;
+      &.labelImg {
+        width: 111px;
+      }
     }
   }
+
+
   .form-btn{
     text-align: center;
     .btn-primary{

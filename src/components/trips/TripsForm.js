@@ -39,7 +39,7 @@ function TripsForm({ handleSubmit, handleChange, trip, errors, history }) {
               {errors.description && <small className="has-error">{errors.description}</small>}
             </div>
             <div className={errors.image ? 'form-group has-error' : 'form-group'}>
-              <label htmlFor="image">Image</label>
+              <label className="labelImg" htmlFor="image">Image</label>
               <DragDrop
                 onChange={handleChange}
                 value={trip.base64 || trip.imageSRC}

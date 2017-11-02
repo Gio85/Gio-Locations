@@ -81,16 +81,18 @@ class PostsNew extends React.Component {
 
   render() {
     return (
-      <PostsForm
-        history={this.props.history}
-        handleSubmit={this.handleSubmit}
-        handleChange={this.handleChange}
-        handleLocationChange={this.handleLocationChange}
-        getAutocompleteInfo={this.getAutocompleteInfo}
-        data={this.state.data}
-        addLocation={this.addLocation}
-        errors={this.state.errors}
-      />
+      <div className="container">
+        <PostsForm
+          history={this.props.history}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          handleLocationChange={this.handleLocationChange}
+          getAutocompleteInfo={this.getAutocompleteInfo}
+          data={this.state.data}
+          addLocation={this.addLocation}
+          errors={this.state.errors}
+        />
+      </div>
     );
   }
 

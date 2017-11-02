@@ -31,14 +31,16 @@ class ConversationsIndex extends React.Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-md-2">
-          {this.state.conversations && this.state.conversations.map(conversation => <div className="single-conversation" key={conversation.id} onClick={() => this.selectConversation(conversation)}>
-            <p>{this.getUser(conversation).username}</p>
-          </div>)}
-        </div>
-        <div className="col-md-10">
-          <ConversationsShow conversation={this.state.selectedConversation}/>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-2">
+            {this.state.conversations && this.state.conversations.map(conversation => <div className="single-conversation" key={conversation.id} onClick={() => this.selectConversation(conversation)}>
+              <p>{this.getUser(conversation).username}</p>
+            </div>)}
+          </div>
+          <div className="col-md-10">
+            <ConversationsShow conversation={this.state.selectedConversation}/>
+          </div>
         </div>
       </div>
     );

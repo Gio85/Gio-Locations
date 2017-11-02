@@ -33,13 +33,15 @@ class TripsNew extends React.Component {
 
   render() {
     return (
-      <TripsForm
-        history={this.props.history}
-        handleSubmit={this.handleSubmit}
-        handleChange={this.handleChange}
-        trip={this.state.trip}
-        errors={this.state.errors}
-      />
+      <div className="container">
+        <TripsForm
+          history={this.props.history}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          trip={this.state.trip}
+          errors={this.state.errors}
+        />
+      </div>
     );
   }
 }

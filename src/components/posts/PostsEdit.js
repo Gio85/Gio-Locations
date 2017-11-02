@@ -88,16 +88,18 @@ class PostsEdit extends React.Component {
 
   render() {
     return (
-      <PostsForm
-        handleSubmit={this.handleSubmit}
-        handleChange={this.handleChange}
-        handleLocationChange={this.handleLocationChange}
-        getAutocompleteInfo={this.getAutocompleteInfo}
-        data={this.state.data}
-        addLocation={this.addLocation}
-        errors={this.state.errors}
-        history={this.props.history}
-      />
+      <div className="container">
+        <PostsForm
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          handleLocationChange={this.handleLocationChange}
+          getAutocompleteInfo={this.getAutocompleteInfo}
+          data={this.state.data}
+          addLocation={this.addLocation}
+          errors={this.state.errors}
+          history={this.props.history}
+        />
+      </div>
     );
   }
 

@@ -26,7 +26,7 @@ class ConversationsShow extends React.Component {
   componentDidUpdate() {
     if(!this.props.conversation || !this.props.conversation.id) return false;
     if(this.state.conversation && (this.props.conversation.id === this.state.conversation.id)) return false;
-    
+
     Axios
       .get(`/api/conversations/${this.props.conversation.id}`, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
@@ -59,32 +59,34 @@ class ConversationsShow extends React.Component {
     const { userId } = Auth.getPayload();
     const { conversation } = this.state;
     return (
-      <div className="box-messages">
-        <div className="message-header">
-          {conversation &&
-            <h1>{conversation.to.id === userId ? conversation.from.username : conversation.to.username}</h1>}
-        </div>
-        <div className="row row-broken">
-          <div className="col-md-12">
-            <div className="col-inside-lg">
-              <div className="box-conversation">
-                {conversation && conversation.messages.map(message =>
-                  <div key={message.id} className={message.from.id === userId ? 'answer right' : 'answer left'}>
-                    <div className="text">{message.text}</div>
-                    <div className="time">{message.createdAt.substr(11, 8)}</div>
-                  </div>
-                )}
+      <div className="container">
+        <div className="box-messages">
+          <div className="message-header">
+            {conversation &&
+              <h1>{conversation.to.id === userId ? conversation.from.username : conversation.to.username}</h1>}
+          </div>
+          <div className="row row-broken">
+            <div className="col-md-12">
+              <div className="col-inside-lg">
+                <div className="box-conversation">
+                  {conversation && conversation.messages.map(message =>
+                    <div key={message.id} className={message.from.id === userId ? 'answer right' : 'answer left'}>
+                      <div className="text">{message.text}</div>
+                      <div className="time">{message.createdAt.substr(11, 8)}</div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <ConversationsForm
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          errors={this.state.errors}
-          message={this.state.message}
-        />
+          <ConversationsForm
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            errors={this.state.errors}
+            message={this.state.message}
+          />
+        </div>
       </div>
     );
   }
