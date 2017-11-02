@@ -1,10 +1,11 @@
 @import './bootstrap/bootstrap.scss';
-@import 'partials/_messenger.scss';
-@import 'partials/_navbar.scss';
-@import 'partials/_trip.scss';
-@import 'partials/_tripForm.scss';
-@import 'partials/_loginform.scss';
-@import 'partials/_userShow.scss';
+@import 'partials/_messenger';
+@import 'partials/_navbar';
+@import 'partials/_trip';
+@import 'partials/_tripForm';
+@import 'partials/_loginform';
+@import 'partials/_userShow';
+@import 'partials/_homepage';
 @import 'partials/_footer';
 
 $sans-serif: 'Muli', sans-serif;
