@@ -29,6 +29,13 @@
 
 .form-group{
   display: flex;
+  button{
+    background-color: #5f9ea0;
+    border: none;
+    &:hover{
+      background-color: #5f9ea0;
+    }
+  }
 }
 
 .single-conversation{

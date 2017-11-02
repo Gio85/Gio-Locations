@@ -12,10 +12,21 @@ class ConversationsShow extends React.Component {
     errors: {}
   }
 
-  componentDidUpdate() {
-    if(!this.props.conversation.id) return false;
-    if(this.state.conversation && (this.props.conversation.id === this.state.conversation.id)) return false;
+  componentDidMount() {
+    if (this.props.match && this.props.match.params.id) {
+      Axios
+        .get(`/api/conversations/${this.props.match.params.id}`, {
+          headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
+        })
+        .then(res => this.setState({ conversation: res.data }, this.stickyScroll))
+        .catch(err => console.log(err));
+    }
+  }
 
+  componentDidUpdate() {
+    if(!this.props.conversation || !this.props.conversation.id) return false;
+    if(this.state.conversation && (this.props.conversation.id === this.state.conversation.id)) return false;
+    
     Axios
       .get(`/api/conversations/${this.props.conversation.id}`, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
@@ -36,7 +47,7 @@ class ConversationsShow extends React.Component {
   handleSubmit = (e) => {
     console.log(this.state.conversation);
     e.preventDefault();
-    Axios.post(`/api/conversations/${this.props.conversation.id}/messages`, { text: this.state.message }, {
+    Axios.post(`/api/conversations/${this.state.conversation.id}/messages`, { text: this.state.message }, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => this.setState({ conversation: res.data, message: '' }, this.stickyScroll))
@@ -44,6 +55,7 @@ class ConversationsShow extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     const { userId } = Auth.getPayload();
     const { conversation } = this.state;
     return (
