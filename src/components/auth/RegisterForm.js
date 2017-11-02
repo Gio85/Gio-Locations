@@ -75,7 +75,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           {errors.passwordConfirmation && <small className="has-error">{errors.passwordConfirmation}</small>}
         </div>
         <div className="form-btn">
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-primary">Register</button>
         </div>
       </div>
     </form>

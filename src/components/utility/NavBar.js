@@ -13,39 +13,41 @@ const Navbar = ({ history }) => {
 
   return(
     <nav>
-      <ul className="navWrap">
-        <div className="navLeft">
-          <Link className="navItem navLogo" to="/">Home</Link>
-          <li className="navItem">
-            <Link to="/trips">
-            Trips
-            </Link>
-          </li>
-        </div>
-        <div className="navRight">
-          <li className="navItem">
-            {Auth.isAuthenticated() && <Link to="/trips/new">
-              <i className="fa fa-plus" aria-hidden="true"></i>Add Trip
-            </Link>}
-          </li>
-          <li className="navItem">
-            {Auth.isAuthenticated() && <Link to={`/users/${Auth.getPayload().userId}`}>Profile</Link>}
-          </li>
-          <li className="navItem">
-            {Auth.isAuthenticated() && <Link to="/conversations">Conversations</Link>
-            }
-          </li>
-          <li className="navItem">
-            {!Auth.isAuthenticated() && <Link to="/login">Login</Link>}
-          </li>
-          <li className="navItem">
-            {!Auth.isAuthenticated() && <Link to="/register">Register</Link>}
-          </li>
-          <li className="navItem">
-            {Auth.isAuthenticated() && <button onClick={logout} className="navLink">Logout</button>}
-          </li>
-        </div>
-      </ul>
+      <div className="container-fluid">
+        <ul className="navWrap">
+          <div className="navLeft">
+            <img src="https://s-media-cache-ak0.pinimg.com/originals/91/91/4b/91914b39e7610bb50c01081531ecb813.png" className="logo"/>
+            <Link className="navItem navLogo" to="/">Home</Link>
+            <li className="navItem">
+              <Link to="/trips">
+              Trips
+              </Link>
+            </li>
+          </div>
+          <div className="navRight">
+            {Auth.isAuthenticated() && <li className="navItem">
+              <Link to="/trips/new">
+                <i className="fa fa-plus" aria-hidden="true"></i>Add Trip
+              </Link>
+            </li>}
+            {Auth.isAuthenticated() && <li className="navItem">
+              <Link to={`/users/${Auth.getPayload().userId}`}>Profile</Link>
+            </li>}
+            {Auth.isAuthenticated() && <li className="navItem">
+              <Link to="/conversations">Conversations</Link>
+            </li>}
+            {!Auth.isAuthenticated() && <li className="navItem">
+              <Link to="/login">Login</Link>
+            </li>}
+            {!Auth.isAuthenticated() && <li className="navItem">
+              <Link to="/register">Register</Link>
+            </li>}
+            {Auth.isAuthenticated() && <li className="navItem">
+              <button onClick={logout} className="navLink">Logout</button>
+            </li>}
+          </div>
+        </ul>
+      </div>
     </nav>
   );
 };

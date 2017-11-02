@@ -21,7 +21,7 @@ class TripsIndex extends React.Component {
         <div className="row">
           {this.state.trips.map(trip => {
             return(
-              <div key={trip.id} className="col-sm">
+              <div key={trip.id} className="col-md-4 col-sm-6 card-single">
                 <div className="card">
                   <img src={trip.imageSRC} className="card-img-top" />
                   <div className="card-body">

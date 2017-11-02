@@ -21,7 +21,7 @@ nav {
 .navItem {
   display: inline;
   list-style: none;
-  margin-right: 15px;
+  margin-left: 15px;
   &i {
     background-color: blue;
     color: blue;
@@ -29,6 +29,11 @@ nav {
   &.navLogo {
     margin-left: 8px;
   }
+}
+
+.logo {
+  height: 40px;
+  margin-right: 10px
 }
 
 .navLink {

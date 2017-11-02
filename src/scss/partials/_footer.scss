@@ -1,0 +1,43 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
+}
+
+.fa-github{
+  cursor: pointer;
+  text-decoration: none;
+}
+
+footer {
+  display: flex;
+  background-color: #333;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+  height: 50px;
+  p {
+    color: #fafafa;
+    margin: 0 20px 0 0;
+  }
+  strong {
+    color: white;
+  }
+  a {
+    color: #fafafa;
+    &:hover{
+      color: #fafafa;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 0;
+    p {
+      margin-bottom: 5px;
+    }
+  }
+}

@@ -3,7 +3,9 @@
 @import 'partials/_navbar.scss';
 @import 'partials/_trip.scss';
 @import 'partials/_tripForm.scss';
+@import 'partials/_loginForm.scss';
 @import 'partials/_userShow.scss';
+@import 'partials/_footer';
 
 $sans-serif: 'Muli', sans-serif;
 $serif: 'Playfair Display', serif;
@@ -14,7 +16,7 @@ body{
 }
 
 .homepage {
-  background-image: url('http://i.dailymail.co.uk/i/pix/2017/08/10/14/4322734800000578-4778448-image-a-58_1502371997636.jpg');
+  background-image: url('http://www.grindtv.com/wp-content/uploads/2015/11/Sunset_Camp_Big_Rock.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -73,9 +75,12 @@ div.drag-drop {
   animation: pulse 1s infinite;
 }
 
+.card-single {
+  margin-bottom: 20px;
+}
+
 .card{
-  width: 500px;
-  // height: 100px;
+  height: 100%;
 }
 .google-map {
   height: 250px;
