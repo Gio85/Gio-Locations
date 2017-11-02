@@ -33,7 +33,7 @@ class UsersShow extends React.Component {
           <div className="col-md-3">
             <h1>{this.state.user.username}</h1>
             <img className="avatar" src={this.state.user.imageSRC} />
-            <p><i className="fa fa-map-marker" aria-hidden="true"></i>{this.state.user.homeLocation}</p>
+            {this.state.user.homeLocation && <p><i className="fa fa-map-marker" aria-hidden="true"></i>{this.state.user.homeLocation}</p>}
             {Auth.isAuthenticated() && this.props.match.params.userId !== Auth.getPayload().userId &&
             <button
               onClick={this.createConversation}

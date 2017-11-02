@@ -5,7 +5,7 @@ const ConversationsForm = ({ handleChange, handleSubmit, message }) => {
     <div className="row">
       <div className="col-md-12">
         <form className="col-md-12" onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="input-group">
             <input
               type="text"
               name="message"
@@ -14,7 +14,9 @@ const ConversationsForm = ({ handleChange, handleSubmit, message }) => {
               value={message}
               className="form-control"
             />
-            <button id="hidden" className="btn btn-primary col-md-2">Send</button>
+            <span className="input-group-btn">
+              <button id="hidden" className="btn btn-primary">Send</button>
+            </span>
           </div>
         </form>
       </div>

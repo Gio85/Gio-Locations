@@ -1,6 +1,7 @@
 .form-group {
   flex-direction: column;
   align-items: center;
+  text-align: -webkit-center;
 }
 
 .tripForm-header {
@@ -38,6 +39,18 @@
     animation: pulse 1s infinite;
     }
   }
+}
+.more-locations {
+  margin-top: 20px;
+  .btn-info{
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    width: 100%;
+  }
+}
+.location-form {
+  margin-top: 20px;
 }
 
 @keyframes pulse {

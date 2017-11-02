@@ -26,7 +26,7 @@ function TripsForm({ handleSubmit, handleChange, trip, errors, history }) {
               />
               {errors.name && <small className="has-error">{errors.name}</small>}
             </div>
-            <div className={errors.description ? 'form-group has-error' : 'form-group'}>
+            <div className={errors.description ? 'has-error' : 'form-group'}>
               <label htmlFor="description">Description</label>
               <input
                 type="text"
@@ -38,7 +38,7 @@ function TripsForm({ handleSubmit, handleChange, trip, errors, history }) {
               />
               {errors.description && <small className="has-error">{errors.description}</small>}
             </div>
-            <div className={errors.image ? 'form-group has-error' : 'form-group'}>
+            <div className={errors.image ? 'has-error' : 'form-group'}>
               <label className="labelImg" htmlFor="image">Image</label>
               <DragDrop
                 onChange={handleChange}
