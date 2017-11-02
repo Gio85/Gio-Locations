@@ -47,14 +47,14 @@ class ConversationsShow extends React.Component {
     return (
       <div className="box white rounded">
         {conversation && <h1>{conversation.to.id === userId ? conversation.from.username : conversation.to.username}</h1>}
-        <div className="conversation content container-fluid bootstrap snippets">
+        <div className="">
           <div className="row row-broken">
-            <div className="col-sm-11 col-xs-12 chat">
-              <div className="col-inside-lg decor-default">
-                <div className="chat-body">
+            <div className="col-sm-11 col-xs-12">
+              <div className="col-inside-lg">
+                <div className="box-conversation">
                   {conversation && conversation.messages.map(message =>
                     <div key={message.id} className={message.from.id === userId ? 'answer right' : 'answer left'}>
-                      <div className="name">{message.from.username}</div>
+                      {/* <div className="name">{message.from.image}</div> */}
                       <div className="text">{message.text}</div>
                       <div className="time">{message.createdAt.substr(11, 8)}</div>
                     </div>

@@ -1,0 +1,48 @@
+
+.trip-banner-image {
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  margin: 20px 0;
+  a, a:hover, a:focus {
+    color: white;
+  }
+}
+
+.trip-locations {
+  margin-top: 20px;
+  .trip-location {
+    background-color: #fafafa;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+    cursor: pointer;
+    div {
+      margin-right: 20px;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 20px;
+    }
+    p {
+      margin: 0;
+      font-style: italic;
+    }
+  }
+}
+
+.trip-locations-map {
+  margin-top: 20px;
+}

@@ -15,7 +15,6 @@ class ConversationsIndex extends React.Component {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
       .then(res => this.setState({ conversations: res.data }, console.log(res.data)))
-
       .catch(err => {
         if(err.response.status === 404) return this.props.history.replace('/404');
         console.log(err);
@@ -30,9 +29,13 @@ class ConversationsIndex extends React.Component {
   render() {
     return (
       <div className="row">
-        {this.state.conversations && this.state.conversations.map(conversation => <div key={conversation.id}>
-          <Link to={`/conversations/${conversation.id}`}>{this.getUser(conversation).username}</Link>
-        </div>)}
+        <div className="col-md-12">
+          <div className="col-md-3 box-conversation">
+            {this.state.conversations && this.state.conversations.map(conversation => <div className="single-conversation" key={conversation.id}>
+              <Link to={`/conversations/${conversation.id}`}>{this.getUser(conversation).username}</Link>
+            </div>)}
+          </div>
+        </div>
       </div>
     );
   }

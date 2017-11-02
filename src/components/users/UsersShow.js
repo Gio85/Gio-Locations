@@ -26,10 +26,6 @@ class UsersShow extends React.Component {
       .catch(err => console.log(err));
   }
 
-
-
-
-
   render() {
     return(
       <div className="row">
@@ -52,7 +48,7 @@ class UsersShow extends React.Component {
             );
           })}
         </div>
-        <div className="page-banner col-md-12">
+        <div className="col-md-12">
           <BackButton history={this.props.history} />
         </div>
       </div>
