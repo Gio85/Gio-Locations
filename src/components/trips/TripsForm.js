@@ -8,11 +8,11 @@ function TripsForm({ handleSubmit, handleChange, trip, errors, history }) {
   return (
     <div className="row">
       <div className="box col-md-12">
-        <div className="tripForm col-md-12">
+        <div className="tripForm-header">
           <BackButton history={history} />
           <h1>Add your Trip</h1>
         </div>
-        <form onSubmit={handleSubmit} className="col-md-12">
+        <form onSubmit={handleSubmit} className="tripForm">
           <div className={errors.name ? 'form-group has-error' : 'form-group'}>
             <label htmlFor="name">Location</label>
             <input
@@ -25,7 +25,7 @@ function TripsForm({ handleSubmit, handleChange, trip, errors, history }) {
             />
             {errors.name && <small className="has-error">{errors.name}</small>}
           </div>
-          <div className={errors.title ? 'form-group has-error' : 'form-group'}>
+          <div className={errors.description ? 'form-group has-error' : 'form-group'}>
             <label htmlFor="description">Description</label>
             <input
               type="text"
@@ -35,11 +35,11 @@ function TripsForm({ handleSubmit, handleChange, trip, errors, history }) {
               value={trip.description}
               onChange={handleChange}
             />
-            {errors.title && <small className="has-error">{errors.title}</small>}
+            {errors.description && <small className="has-error">{errors.description}</small>}
           </div>
           <div className={errors.image ? 'form-group has-error' : 'form-group'}>
             <label htmlFor="image">Image</label>
-            <DragDrop
+            <DragDrop 
               onChange={handleChange}
               value={trip.base64 || trip.imageSRC}
             />

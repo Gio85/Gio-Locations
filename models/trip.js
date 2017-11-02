@@ -21,9 +21,9 @@ const postSchema = new mongoose.Schema({
 });
 
 const tripSchema = new mongoose.Schema({
-  name: { type: String },
-  description: { type: String, required: true },
-  image: { type: String },
+  name: { type: String, required: 'The location is required' },
+  description: { type: String, required: 'The description is required' },
+  image: { type: String , required: 'The picture is required'},
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
   posts: [ postSchema ]
 }, {

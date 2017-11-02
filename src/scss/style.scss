@@ -20,6 +20,10 @@ button {
 img {
   max-width: 100%;
 }
+label {
+  text-align: center;
+  margin-right: 8px;
+}
 
 .box {
   background-color: white;
@@ -38,15 +42,24 @@ img {
   }
 }
 
-.dropzone {
-    background-size: cover;
+div.drag-drop {
+  input[type=file] {
+    display: none;
+  }
+
+  div.dropzone {
+    height: 200px;
+    width: 200px;
+    background-color: #fafafa;
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
-    background-color: #ddd;
-    height: 100px;
-    width: 221px;
-    text-align: center;
-    position: relative;
+  }
+}
+.red {
+  background-color: rgba(255, 0, 0, 0.5);
+  border-radius: 5%;
+  text-align: center;
+  animation: pulse 1s infinite;
 }
 
 .card{
