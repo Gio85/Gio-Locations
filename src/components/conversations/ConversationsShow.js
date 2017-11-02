@@ -1,6 +1,5 @@
 import React from 'react';
 import Axios from 'axios';
-import BackButton from '../utility/BackButton';
 
 import ConversationsForm from './ConversationsForm';
 import Auth from '../../lib/Auth';
@@ -13,18 +12,20 @@ class ConversationsShow extends React.Component {
     errors: {}
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
+    if(!this.props.conversation.id) return false;
+    if(this.state.conversation && (this.props.conversation.id === this.state.conversation.id)) return false;
+    
     Axios
-      .get(`/api/conversations/${this.props.match.params.id}`, {
+      .get(`/api/conversations/${this.props.conversation.id}`, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
       })
-      .then(res => this.setState({ conversation: res.data }, () => console.log(this.state)))
+      .then(res => this.setState({ conversation: res.data }, this.stickyScroll))
       .catch(err => console.log(err));
   }
 
   stickyScroll() {
-    console.log(this.state);
-    const objDiv = document.getElementsByClassName('conversation')[0];
+    const objDiv = document.getElementsByClassName('box-conversation')[0];
     objDiv.scrollTop = objDiv.scrollHeight;
   }
 
@@ -34,7 +35,7 @@ class ConversationsShow extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post(`/api/conversations/${this.props.match.params.id}/messages`, { text: this.state.message }, {
+    Axios.post(`/api/conversations/${this.props.conversation.id}/messages`, { text: this.state.message }, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => this.setState({ conversation: res.data, message: '' }, this.stickyScroll))
@@ -47,7 +48,6 @@ class ConversationsShow extends React.Component {
     return (
       <div className="box-messages">
         <div className="message-header">
-          <BackButton history={this.props.history} />
           {conversation &&
             <h1>{conversation.to.id === userId ? conversation.from.username : conversation.to.username}</h1>}
         </div>
@@ -71,7 +71,6 @@ class ConversationsShow extends React.Component {
           handleSubmit={this.handleSubmit}
           errors={this.state.errors}
           message={this.state.message}
-          history={history}
         />
       </div>
     );

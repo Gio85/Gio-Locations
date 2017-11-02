@@ -1,0 +1,16 @@
+.tripForm {
+  display: flex;
+  h1{
+    text-align: center;
+    font-size: 25px;
+    border-bottom: 1px solid grey;
+    width: 100%;
+  }
+  .btn-primary {
+    font-size: 10px;
+    position: absolute;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+}

@@ -1,6 +1,7 @@
 .box-conversation {
   height: 70vh;
   overflow: scroll;
+  padding-bottom: 10px;
 }
 .box-messages {
   background-color: white;
@@ -31,6 +32,7 @@
 }
 
 .single-conversation{
+  cursor: pointer;
   background-color: #fafafa;
   border: 1px solid lightgrey;
   border-radius: 5px;
@@ -39,6 +41,9 @@
   justify-content: space-between;
   padding: 10px 20px;
   align-items: center;
+  &:hover {
+    border-color: #007bff;
+  }
 }
 .answer {
   background-color: #fafafa;
@@ -52,12 +57,12 @@
   margin: 5px;
 }
 .left {
-  padding: 0 0 0 20px;
+  padding: 1px 0 2px 20px;
   text-align: left;
   float: left;
 }
 .right {
-  padding: 0 20px 0 0;
+  padding: 1px 20px 2px 0;
   text-align: right;
   float: right;
   background-color: #6495ed;
