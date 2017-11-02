@@ -15,7 +15,7 @@ class ConversationsShow extends React.Component {
   componentDidUpdate() {
     if(!this.props.conversation.id) return false;
     if(this.state.conversation && (this.props.conversation.id === this.state.conversation.id)) return false;
-    
+
     Axios
       .get(`/api/conversations/${this.props.conversation.id}`, {
         headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
@@ -34,6 +34,7 @@ class ConversationsShow extends React.Component {
   }
 
   handleSubmit = (e) => {
+    console.log(this.state.conversation);
     e.preventDefault();
     Axios.post(`/api/conversations/${this.props.conversation.id}/messages`, { text: this.state.message }, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
