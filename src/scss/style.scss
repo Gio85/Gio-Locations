@@ -1,5 +1,5 @@
 @import './bootstrap/bootstrap.scss';
-@import 'partials/_messanger.scss';
+@import 'partials/_messenger.scss';
 @import 'partials/_navbar.scss';
 @import 'partials/_trip.scss';
 @import 'partials/_userShow.scss';
@@ -33,7 +33,6 @@ img {
   }
 }
 
-
 .dropzone {
     background-size: cover;
     background-repeat: no-repeat;
@@ -44,8 +43,6 @@ img {
     text-align: center;
     position: relative;
 }
-
-
 
 .card{
   width: 500px;

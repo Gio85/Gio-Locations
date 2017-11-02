@@ -30,7 +30,7 @@ class ConversationsIndex extends React.Component {
     return (
       <div className="row">
         <div className="col-md-12">
-          <div className="col-md-3 box-conversation">
+          <div className="col-md-3">
             {this.state.conversations && this.state.conversations.map(conversation => <div className="single-conversation" key={conversation.id}>
               <Link to={`/conversations/${conversation.id}`}>{this.getUser(conversation).username}</Link>
             </div>)}
