@@ -21,6 +21,14 @@
     border-color: #007bff;
   }
 }
+.btn-outline-primary {
+  &:hover {
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
 .center{
   margin: 0 auto;
   .form-btn{

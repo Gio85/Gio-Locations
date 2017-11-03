@@ -2,12 +2,14 @@ import React from 'react';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
 import ConversationsShow from './ConversationsShow';
+import { Button, Collapse, Card, CardBody } from 'reactstrap';
 
 
 class ConversationsIndex extends React.Component {
   state = {
     conversations: [],
-    selectedConversation: {}
+    selectedConversation: {},
+    collapse: false
   }
 
   componentWillMount() {
@@ -27,13 +29,32 @@ class ConversationsIndex extends React.Component {
     return conversation.from.id === userId ? conversation.to : conversation.from;
   }
 
-  selectConversation = (selectedConversation) => this.setState({ selectedConversation });
+  toggle = () => {
+    this.setState((prevState) => {
+      return { collapse: !prevState.collapse };
+    });
+  }
+
+
+  selectConversation = (selectedConversation) => this.setState({ selectedConversation }, this.toggle);
 
   render() {
     return (
       <div className="container">
+        <div className="names-mobile row">
+          <div className="col-12">
+            <Button color="primary" onClick={this.toggle.bind(this)} style={{ marginBottom: '1rem' }}>Select User</Button>
+          </div>
+          <div className="col-12">
+            <Collapse isOpen={this.state.collapse}>
+              {this.state.conversations && this.state.conversations.map(conversation => <div className="single-conversation" key={conversation.id} onClick={() => this.selectConversation(conversation)}>
+                <p>{this.getUser(conversation).username}</p>
+              </div>)}
+            </Collapse>
+          </div>
+        </div>
         <div className="row">
-          <div className="col-md-2">
+          <div className="col-md-2 names-desktop">
             {this.state.conversations && this.state.conversations.map(conversation => <div className="single-conversation" key={conversation.id} onClick={() => this.selectConversation(conversation)}>
               <p>{this.getUser(conversation).username}</p>
             </div>)}

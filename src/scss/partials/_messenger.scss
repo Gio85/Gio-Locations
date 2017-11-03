@@ -85,3 +85,23 @@
   font-size: 14px;
   line-height: 36px;
 }
+
+.names-desktop {
+
+}
+
+.names-mobile {
+  display: none;
+  button {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px){
+  .names-desktop {
+    display: none;
+  }
+  .names-mobile {
+    display: block;
+  }
+}

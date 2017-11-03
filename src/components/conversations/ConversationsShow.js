@@ -59,7 +59,7 @@ class ConversationsShow extends React.Component {
     const { userId } = Auth.getPayload();
     const { conversation } = this.state;
     return (
-      <div className="container">
+      <div className="">
         <div className="box-messages">
           <div className="message-header">
             {conversation &&
