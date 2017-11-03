@@ -16,6 +16,16 @@ nav {
       font-size: 10px;
     }
   }
+  @media only screen and (max-width: 414px) {
+    .center-text{
+      font-size: 10px;
+    }
+    .navRight{
+      .nav-text{
+        display: none;
+      }
+    }
+  }
 }
 
 .navInnerWrap {

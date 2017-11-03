@@ -30,10 +30,10 @@ const Navbar = ({ history }) => {
               </Link>
             </li>}
             {Auth.isAuthenticated() && <li className="navItem">
-              <Link to={`/users/${Auth.getPayload().userId}`}><i className="fa fa-user-circle-o" aria-hidden="true"></i></Link>
+              <Link to={`/users/${Auth.getPayload().userId}`}><i className="fa fa-user-circle-o" aria-hidden="true"></i><span className="nav-text"> Profile</span></Link>
             </li>}
             {Auth.isAuthenticated() && <li className="navItem">
-              <Link to="/conversations"><i className="fa fa-comments-o" aria-hidden="true"></i></Link>
+              <Link to="/conversations"><i className="fa fa-comments-o" aria-hidden="true"></i><span className="nav-text"> Conversations</span></Link>
             </li>}
             {!Auth.isAuthenticated() && <li className="navItem">
               <Link to="/login">Login</Link>
