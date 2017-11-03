@@ -9,3 +9,10 @@
     font-weight: bold;
   }
 }
+
+
+@media only screen and (max-width: 780px) {
+  .center-text{
+    display: none;
+  }
+}

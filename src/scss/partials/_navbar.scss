@@ -11,6 +11,11 @@ nav {
   align-items: center;
   margin: 0;
   padding: 15px 0;
+  @media only screen and (max-width: 780px) {
+    .center-text{
+      font-size: 10px;
+    }
+  }
 }
 
 .navInnerWrap {

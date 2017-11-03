@@ -39,6 +39,8 @@ class ConversationsIndex extends React.Component {
             </div>)}
           </div>
           <div className="col-md-10">
+            {this.state.conversations.length < 1 &&
+            <small>You do not have any conversatione with anyone. Start to talk to someone, do not be scared.</small>}
             {this.state.conversations.length > 0 &&
               <ConversationsShow conversation={this.state.selectedConversation}/>}
           </div>
