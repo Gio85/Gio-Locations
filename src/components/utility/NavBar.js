@@ -16,8 +16,7 @@ const Navbar = ({ history }) => {
       <div className="container-fluid">
         <ul className="navWrap">
           <div className="navLeft">
-            <img src="https://s-media-cache-ak0.pinimg.com/originals/91/91/4b/91914b39e7610bb50c01081531ecb813.png" className="logo"/>
-            <Link className="navItem navLogo" to="/">Home</Link>
+            <Link to="/"><img src="https://s-media-cache-ak0.pinimg.com/originals/91/91/4b/91914b39e7610bb50c01081531ecb813.png" className="logo"/></Link>
             <li className="navItem">
               <Link to="/trips">
               Trips
@@ -31,10 +30,10 @@ const Navbar = ({ history }) => {
               </Link>
             </li>}
             {Auth.isAuthenticated() && <li className="navItem">
-              <Link to={`/users/${Auth.getPayload().userId}`}>Profile</Link>
+              <Link to={`/users/${Auth.getPayload().userId}`}><i className="fa fa-user-circle-o" aria-hidden="true"></i></Link>
             </li>}
             {Auth.isAuthenticated() && <li className="navItem">
-              <Link to="/conversations">Conversations</Link>
+              <Link to="/conversations"><i className="fa fa-comments-o" aria-hidden="true"></i></Link>
             </li>}
             {!Auth.isAuthenticated() && <li className="navItem">
               <Link to="/login">Login</Link>
@@ -43,7 +42,7 @@ const Navbar = ({ history }) => {
               <Link to="/register">Register</Link>
             </li>}
             {Auth.isAuthenticated() && <li className="navItem">
-              <button onClick={logout} className="navLink">Logout</button>
+              <button onClick={logout} className="navLink"><i className="fa fa-sign-out" aria-hidden="true"></i></button>
             </li>}
           </div>
         </ul>
