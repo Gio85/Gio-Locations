@@ -3,9 +3,9 @@ import React from 'react';
 const LoginForm = ({ handleChange, handleSubmit, credentials, error }) => {
   return (
     <form onSubmit={handleSubmit}>
-      {error && <p className="has-error">{error}</p>}
       <div className="center col-md-6">
         <div className="form-group">
+          {error && <p className="has-error">{error}</p>}
           <label htmlFor="email">Email</label>
           <input
             type="text"
