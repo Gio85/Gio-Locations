@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import Auth from '../../lib/Auth';
 import ConversationsShow from './ConversationsShow';
-import { Button, Collapse, Card, CardBody } from 'reactstrap';
+import { Button, Collapse } from 'reactstrap';
 
 
 class ConversationsIndex extends React.Component {
@@ -63,7 +63,7 @@ class ConversationsIndex extends React.Component {
             {this.state.conversations.length < 1 &&
             <small>You do not have any conversatione with anyone. Start to talk to someone, do not be scared.</small>}
             {this.state.conversations.length > 0 &&
-              <ConversationsShow conversation={this.state.selectedConversation}/>}
+              <ConversationsShow conversation={this.state.selectedConversation} index={true}/>}
           </div>
         </div>
       </div>

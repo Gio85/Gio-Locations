@@ -131,11 +131,11 @@ class TripsShow extends React.Component {
                             {Auth.isAuthenticated() && this.isCreatedBy() &&
                           <button className="btn btn-outline-primary">
                             <Link to={`/trips/${this.state.trip.id}/posts/${post.id}/edit`}>
-                              <i className="fa fa-pencil" aria-hidden="true"></i>Edit the post
+                              <i className="fa fa-pencil" aria-hidden="true"></i> Edit the post
                             </Link>
                           </button>}
                             {Auth.isAuthenticated() && this.isCreatedBy() &&
-                          <button className="btn btn-outline-danger" onClick={() => this.deleteTripPost(post.id)}>Delete</button>}
+                          <button className="btn btn-outline-danger" onClick={() => this.deleteTripPost(post.id)}><i className="fa fa-trash" aria-hidden="true"></i> Delete</button>}
                           </div>
                         </div>
                         <div className="col-md-6 trip-locations-map">
