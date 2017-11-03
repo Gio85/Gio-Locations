@@ -3,17 +3,7 @@
   align-items: center;
   text-align: -webkit-center;
 }
-// .row{
-//   &.box{
-//     &.box-flex{
-//       h3{
-//         text-align: center;
-//         border-bottom: 1px solid black;
-//         width: 100%;
-//       }
-//     }
-//   }
-// }
+
 
 .tripForm-header {
   display: flex;
@@ -42,14 +32,12 @@
       border-color: #007bff;
     }
   }
-  .tripsForm{
     .has-error {
     background-color: rgba(255, 0, 0, 0.5);
     border-radius: 5%;
     text-align: center;
     animation: pulse 1s infinite;
     }
-  }
 }
 .more-locations {
   margin-top: 20px;

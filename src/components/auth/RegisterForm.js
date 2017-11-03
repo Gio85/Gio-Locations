@@ -6,7 +6,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
   return (
     <form onSubmit={handleSubmit} className="box">
       <div className="center col-md-8">
-        <div className={errors.image ? 'form-group has-error' : 'form-group'}>
+        <div className="form-group">
           <label htmlFor="image">Avatar</label>
           <DragDrop
             onChange={handleChange}
@@ -14,7 +14,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           />
           {errors.image && <small className="has-error">{errors.image}</small>}
         </div>
-        <div className={errors.username ? 'form-group has-error' : 'form-group'}>
+        <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -26,7 +26,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           />
           {errors.username && <small className="has-error">{errors.username}</small>}
         </div>
-        <div className={errors.homeLocation ? 'form-group has-error' : 'form-group'}>
+        <div className="form-group">
           <label htmlFor="homeLocation">Location</label>
           <input
             type="text"
@@ -38,7 +38,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           />
           {errors.homeLocation && <small className="has-error">{errors.homeLocation}</small>}
         </div>
-        <div className={errors.email ? 'form-group has-error' : 'form-group'}>
+        <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
             type="text"
@@ -50,7 +50,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           />
           {errors.email && <small className="has-error">{errors.email}</small>}
         </div>
-        <div className={errors.password ? 'form-group has-error' : 'form-group'}>
+        <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -62,7 +62,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           />
           {errors.password && <small className="has-error">{errors.password}</small>}
         </div>
-        <div className={errors.passwordConfirmation ? 'form-group has-error' : 'form-group'}>
+        <div className="form-group">
           <label htmlFor="passwordConfirmation">Confirmation Password</label>
           <input
             type="password"

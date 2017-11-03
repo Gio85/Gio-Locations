@@ -13,7 +13,7 @@ function PostsForm({ handleSubmit, handleChange, handleLocationChange, getAutoco
         </div>
         <form onSubmit={handleSubmit} className="tripForm">
           <div className="center col-md-8">
-            <div className={errors.title ? 'form-group has-error' : 'form-group'}>
+            <div className="form-group">
               <label htmlFor="title">Title</label>
               <input
                 type="text"
@@ -26,7 +26,7 @@ function PostsForm({ handleSubmit, handleChange, handleLocationChange, getAutoco
               />
               {errors.title && <small className="has-error">{errors.title}</small>}
             </div>
-            <div className={errors.body ? 'form-group has-error' : 'form-group'}>
+            <div className="form-group">
               <label htmlFor="body">Description</label>
               <textarea
                 type="textarea"
@@ -39,7 +39,7 @@ function PostsForm({ handleSubmit, handleChange, handleLocationChange, getAutoco
               ></textarea>
               {errors.body && <small className="has-error">{errors.body}</small>}
             </div>
-            <div className={errors.date ? 'form-group has-error' : 'form-group'}>
+            <div className="form-group">
               <label htmlFor="date">Date</label>
               <input
                 type="date"
@@ -52,7 +52,7 @@ function PostsForm({ handleSubmit, handleChange, handleLocationChange, getAutoco
               {errors.date && <small
                 className="has-error">{errors.date}</small>}
             </div>
-            <div className={errors.image ? 'form-group has-error' : 'form-group'}>
+            <div className="form-group">
               <label htmlFor="image">Image</label>
               <DragDrop
                 onChange={handleChange}

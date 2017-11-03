@@ -13,6 +13,7 @@ const ConversationsForm = ({ handleChange, handleSubmit, message }) => {
               onChange={handleChange}
               value={message}
               className="form-control"
+              required="required"
             />
             <span className="input-group-btn">
               <button id="hidden" className="btn btn-primary">Send</button>
