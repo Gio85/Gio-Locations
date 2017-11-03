@@ -46,6 +46,8 @@ class UsersShow extends React.Component {
               <BackButton history={this.props.history} />
               <h3>Trips</h3>
             </div>
+            {this.state.user && this.state.user.trips.length < 1 &&
+            <small>You did not share any trip yet.</small>}
             {this.state.user && this.state.user.trips.map((trip) => {
               return (
                 <div key={trip.id} className="card-userPage">
