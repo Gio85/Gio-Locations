@@ -4,7 +4,7 @@ class OAuth {
   static providers = [{
     name: 'facebook',
     url: '/api/oauth/facebook',
-    clientId: '829651533876719',
+    clientId: '1729413600466536',
     authEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
     scope: 'email'
   }];
@@ -13,7 +13,7 @@ class OAuth {
     const qs = {
       scope: provider.scope,
       client_id: provider.clientId,
-      redirect_uri: window.location.href + '/'
+      redirect_uri: window.location.href
     };
 
     return `${provider.authEndpoint}?${queryString.stringify(qs)}`;
