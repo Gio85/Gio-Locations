@@ -8,6 +8,4 @@
 ![GioLocations](https://user-images.githubusercontent.com/20437891/32744559-cb8143f2-c8a7-11e7-8458-904b35aa9a17.png)
 ![giolocations herokuapp com- iphone 6 plus 1](https://user-images.githubusercontent.com/20437891/33038944-3b77760a-ce2e-11e7-9281-00440e860e60.png)
 ![giolocations herokuapp com- iphone 6 plus 2](https://user-images.githubusercontent.com/20437891/33038948-3d896f98-ce2e-11e7-8a7b-df160fb388bf.png)
-
-
-![giolocations herokuapp com- iphone 6 plus 2](https://user-images.githubusercontent.com/20437891/33038893-12d73226-ce2e-11e7-8684-2e148efdc461.png)
+![giolocations herokuapp com- iphone 6 plus](https://user-images.githubusercontent.com/20437891/33038980-59cfc54e-ce2e-11e7-8b84-ee96cd8e2eeb.png)
